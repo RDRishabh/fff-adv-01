@@ -31,7 +31,7 @@ export default function ProblemSelection() {
   return (
     <section className="py-24 bg-[#FDF8F4] relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="flex flex-row gap-12 lg:gap-16 items-center justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* LEFT: Content */}
           <div>
@@ -41,7 +41,7 @@ export default function ProblemSelection() {
             </span>
 
             {/* Heading */}
-            <h2 className="mt-6 text-4xl md:text-5xl font-bold text-neutral-900 leading-tight">
+            <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight">
               Ads don't fix a weak store.
             </h2>
 
@@ -51,16 +51,16 @@ export default function ProblemSelection() {
             </p>
 
             {/* Checklist */}
-            <ul className="mt-8 space-y-5">
+            <ul className="mt-8 space-y-4 md:space-y-5">
               {problems.map((item, index) => (
-                <li key={index} className="flex items-start gap-4">
+                <li key={index} className="flex items-start gap-3 md:gap-4">
                   {/* Checkmark Icon */}
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#ff7a00] flex items-center justify-center mt-0.5">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <span className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#ff7a00] flex items-center justify-center mt-0.5">
+                    <svg className="w-3 h-3 md:w-3.5 md:h-3.5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </span>
-                  <div>
+                  <div className="text-sm md:text-base">
                     <span className="font-semibold text-neutral-900">{item.title}</span>
                     <span className="text-neutral-500"> → {item.result}</span>
                   </div>
@@ -69,10 +69,10 @@ export default function ProblemSelection() {
             </ul>
 
             {/* CTA Button */}
-            <div className="mt-10">
+            <div className="mt-8 md:mt-10">
               <a
                 href="#book-call"
-                className="inline-block rounded-full border-2 border-[#ff7a00] px-8 py-3 text-sm font-semibold text-[#ff7a00] transition hover:bg-[#ff7a00] hover:text-white"
+                className="inline-block rounded-full border-2 border-[#ff7a00] px-6 md:px-8 py-3 text-sm font-semibold text-[#ff7a00] transition hover:bg-[#ff7a00] hover:text-white"
               >
                 Book a Call
               </a>
@@ -83,7 +83,7 @@ export default function ProblemSelection() {
           <div className="relative flex justify-center lg:justify-end">
             {/* Main Image */}
             <div className="relative">
-              <div className="w-full max-w-md lg:max-w-lg rounded-2xl overflow-hidden">
+              <div className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded-2xl overflow-hidden">
                 <img
                   src="/problem-image.png"
                   alt="Professional working"
@@ -91,15 +91,17 @@ export default function ProblemSelection() {
                 />
               </div>
 
-              {/* Floating Tags */}
-              {floatingTags.map((tag, index) => (
-                <div
-                  key={index}
-                  className={`absolute ${tag.position} ${tag.rotate} ${tag.color} px-4 py-2 rounded-full text-white text-xs font-semibold uppercase tracking-wide shadow-lg`}
-                >
-                  {tag.text}
-                </div>
-              ))}
+              {/* Floating Tags - hidden on mobile, shown on md+ */}
+              <div className="hidden md:block">
+                {floatingTags.map((tag, index) => (
+                  <div
+                    key={index}
+                    className={`absolute ${tag.position} ${tag.rotate} ${tag.color} px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-white text-[10px] lg:text-xs font-semibold uppercase tracking-wide shadow-lg`}
+                  >
+                    {tag.text}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -107,7 +109,7 @@ export default function ProblemSelection() {
       </div>
 
       {/* Decorative orange dot */}
-      <div className="absolute bottom-8 right-8 w-3 h-3 rounded-full bg-[#ff7a00]" />
+      <div className="absolute bottom-8 right-8 w-3 h-3 rounded-full bg-[#ff7a00] hidden md:block" />
     </section>
   );
 }
