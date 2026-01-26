@@ -1,4 +1,10 @@
-// Minimalist icons for the widget card
+"use client";
+
+import { useEffect, useState } from "react";
+
+/* ----------------------------------
+   ICONS (minimal, inline SVGs)
+-----------------------------------*/
 const icons = {
   Speed: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -32,68 +38,86 @@ const icons = {
   ),
 };
 
-const widgetItems = [
-  { name: "Speed", status: "green" },
-  { name: "Trust", status: "pending" },
-  { name: "Product Page", status: "green" },
-  { name: "Checkout", status: "pending" },
-  { name: "Tracking", status: "green" },
+/* ----------------------------------
+   HERO IMAGES (FIXED PATHS)
+-----------------------------------*/
+const heroImages = [
+  "/images/hero/kindmatter.jpeg",
+  "/images/hero/monarque.jpeg",
+  "/images/hero/Nova.jpeg",
+  "/images/hero/Trucare.jpeg",
+  "/images/hero/vratam.jpeg",
 ];
 
+const headlines = [
+  "KIND MATTER",
+  "MONARQUE",
+  "NOVA",
+  "TRUCARE",
+  "VRATAM",
+];
+
+
+/* ----------------------------------
+   HERO SECTION
+-----------------------------------*/
 export default function Hero() {
   return (
     <section className="relative pt-40 pb-24 bg-[#FDF8F4] overflow-hidden">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 items-center">
-          
-          {/* LEFT: Copy */}
+        <div className="flex flex-row wgap-16 items-center">
+          {/* LEFT COPY */}
           <div>
-
-            <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-neutral-900 md:text-5xl lg:text-6xl">
-              Launch a professionally built Shopify store that converts.
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-black">
+              Launch a <br/>
+              Professionally built <span className="inline-block align-middle mx-1">
+                <img src="/images/shopify.png" alt="Shopify logo" style={{ height: '1em', width: 'auto', display: 'inline-block', verticalAlign: 'bottom' }} />
+              </span>store<br/>
+              that converts.
             </h1>
 
-            <p className="mt-6 max-w-xl text-lg text-neutral-500 leading-relaxed">
+            <p className="mt-6 max-w-xl text-lg text-neutral-400">
               Built for D2C founders launching or upgrading before scaling ads.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex gap-4">
               <a
                 href="#book-call"
-                className="rounded-full bg-[#ff7a00] px-8 pt-2 pb-2 text-sm font-semibold text-white transition hover:bg-[#e66d00] shadow-md hover:shadow-lg"
+                className="rounded-full bg-[#ff7a00] px-8 py-3 text-lg font-medium text-white hover:bg-[#e66d00] transition flex items-center justify-center gap-2"
+                style={{ minWidth: '340px' }}
               >
-                Let's Talk
-              </a>
-
-              <a
-                href="#free-check"
-                className="rounded-full border-2 border-neutral-300 bg-white px-8 pt-2 pb-2 text-sm font-semibold text-neutral-800 transition hover:border-neutral-400 hover:bg-neutral-50"
-              >
-                Learn More
+                Book a FREE consultation today
+                <span className="ml-2">
+                  <svg width="22" height="22" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
               </a>
             </div>
 
-            {/* Chips */}
-            <div className="mt-8 flex flex-wrap gap-3 text-sm">
-              <span className="rounded-full bg-white border border-neutral-200 px-4 py-2 text-neutral-600">
-                Shopify-first
-              </span>
-              <span className="rounded-full bg-white border border-neutral-200 px-4 py-2 text-neutral-600">
-                Conversion-focused
-              </span>
-              <span className="rounded-full bg-white border border-neutral-200 px-4 py-2 text-neutral-600">
-                Fast delivery
-              </span>
+            <div className="mt-8 flex flex-col gap-2 mx-auto sm:flex-row sm:gap-4">
+              {[
+                "Shopify-First",
+                "Conversion Focused",
+                "Fast Delievery"
+              ].map((text) => (
+                <span
+                  key={text}
+                  className="flex items-center bg-[#C6F6D5] rounded-md px-3 py-2 text-green-700 font-semibold text-base shadow-sm"
+                  style={{ fontWeight: 500 }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="mr-2" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="10" fill="#22C55E"/>
+                    <path d="M6 10.5L9 13.5L14 8.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  {text}
+                </span>
+              ))}
             </div>
           </div>
 
-          {/* RIGHT: Widget Card */}
-          <div className="relative flex justify-center lg:justify-end">
-            {/* Decorative orange dot */}
+          {/* RIGHT ANIMATION (CONSTRAINED) */}
+          <div className="relative flex justify-center lg:justify-end overflow-hidden">
             
           </div>
-
         </div>
       </div>
     </section>

@@ -24,7 +24,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-[#FDF8F4]">
       <div className="mx-auto max-w-6xl px-4">
         {/* Header */}
         <div className="text-center mb-16">
@@ -82,19 +82,6 @@ export default function HowItWorks() {
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Step descriptions below */}
-          <div className="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-neutral-200">
-            {steps.map((step) => (
-              <div key={step.number} className="text-center">
-                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-full ${step.color} mb-4`}>
-                  <span className={`${step.textColor} font-bold text-sm`}>{step.number}</span>
-                </div>
-                <h3 className="font-semibold text-neutral-900 mb-2">{step.title}</h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">{step.description}</p>
-              </div>
-            ))}
           </div>
         </div>
 

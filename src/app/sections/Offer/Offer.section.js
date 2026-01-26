@@ -4,7 +4,7 @@ import { InlineWidget } from "react-calendly";
 
 export default function Offer() {
   return (
-    <section className="py-24 bg-[#FDF8F4]">
+    <section className="py-24 bg-[#FFFFFF]">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           

@@ -66,18 +66,13 @@ const brands = [
 
 export default function BrandsStrip() {
   return (
-    <section className="py-16 bg-[#ff7a00] overflow-hidden">
+    <section className="py-12 bg-[#ff7a00] overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 text-center">
-        {/* Badge */}
-        <span className="inline-block rounded-md bg-[#FDF8F4] px-4 py-1.5 text-xs font-semibold text-[#ff7a00] uppercase tracking-wide">
-          Our Client's
-        </span>
+        
 
         {/* Heading */}
-        <h2 className="mt-6 text-3xl font-bold text-[#FDF8F4] md:text-4xl lg:text-5xl leading-tight">
-          Trusted by High-Growth Startups
-          <br />
-          Across Industries
+        <h2 className="text-3xl font-bold text-[#FDF8F4] md:text-4xl lg:text-5xl leading-tight">
+          Brands we’ve worked with
         </h2>
       </div>
 
@@ -94,7 +89,7 @@ export default function BrandsStrip() {
             {brands.map((brand, i) => (
               <div
                 key={`first-${i}`}
-                className="flex items-center gap-3 text-[#FDF8F4]/90"
+                className="flex items-center gap-3 text-[#000000]/90 bg-white rounded-2xl px-4 py-2"
               >
                 {brand.icon}
                 <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span>
@@ -103,11 +98,11 @@ export default function BrandsStrip() {
           </div>
           
           {/* Duplicate set for seamless loop */}
-          <div className="flex shrink-0 items-center gap-16 px-8">
+          <div className="flex shrink-0 items-center gap-8 px-8">
             {brands.map((brand, i) => (
               <div
                 key={`second-${i}`}
-                className="flex items-center gap-3 text-[#FDF8F4]/90"
+                className="flex items-center gap-3 text-[#000000]/90 bg-white rounded-2xl px-4 py-2"
               >
                 {brand.icon}
                 <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span>
@@ -120,7 +115,7 @@ export default function BrandsStrip() {
             {brands.map((brand, i) => (
               <div
                 key={`third-${i}`}
-                className="flex items-center gap-3 text-[#FDF8F4]/90"
+                className="flex items-center gap-3 text-[#000000]/90 bg-white rounded-2xl px-4 py-2"
               >
                 {brand.icon}
                 <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span>

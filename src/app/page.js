@@ -41,9 +41,6 @@ export default function HomePage() {
       {/* TESTIMONIALS */}
       <Testimonials />
 
-      {/* EXAMPLES */}
-      <Examples />
-
       {/* HOW IT WORKS */}
       <section id="how-it-works">
         <HowItWorks />
@@ -53,14 +50,6 @@ export default function HomePage() {
       <section id="book-call">
         <Offer />
       </section>
-
-      {/* FAQ */}
-      <section id="faq">
-        <FAQ />
-      </section>
-
-      {/* FINAL CTA */}
-      <FinalCTA />
     </main>
   );
 }

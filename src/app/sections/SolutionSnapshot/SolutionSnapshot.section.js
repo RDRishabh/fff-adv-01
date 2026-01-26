@@ -32,12 +32,13 @@ export default function SolutionSnapshot() {
       <div className="mx-auto max-w-7xl px-4">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <span className="inline-block px-4 py-2 rounded-md bg-[#ff7a00] text-white text-xs font-semibold uppercase tracking-wide mb-6">
-            WHAT WE DO
-          </span>
+          
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight">
             What FFF does
           </h2>
+          <p className="mt-2 max-w-2xl mx-auto text-neutral-600 text-md md:text-lg leading-relaxed">
+            Key solutions we provide to help your store convert and scale.
+          </p>
         </div>
 
         {/* Solution Tiles */}
@@ -45,24 +46,41 @@ export default function SolutionSnapshot() {
           {solutions.map((solution, index) => (
             <div
               key={index}
-              className="bg-[#ff7a00] rounded-2xl p-8 md:p-10 text-center text-white"
+              className="bg-[#ff7a00] rounded-2xl p-8 md:p-10 text-white flex flex-col items-center"
             >
               {/* Icon */}
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-6">
-                {solution.icon}
-              </div>
+              <div className="mb-4">{solution.icon}</div>
               {/* Title */}
-              <p className="text-lg md:text-xl font-semibold leading-relaxed">
+              <p className="text-lg md:text-xl font-normal leading-relaxed text-center mb-4">
                 {solution.title}
               </p>
+              {/* Tool Logos */}
+              <div className="flex flex-row flex-wrap gap-2 justify-center items-center mt-auto">
+                {index === 0 && (
+                  <>
+                    <img src="/images/tools/shopify.svg" alt="Shopify" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
+                    <img src="/images/tools/figma.svg" alt="Figma" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
+                    <img src="/images/tools/photoshop.svg" alt="Photoshop" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
+                  </>
+                )}
+                {index === 1 && (
+                  <>
+                    <img src="/images/tools/zapier.svg" alt="Zapier" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
+                    <img src="/images/tools/klaviyo.svg" alt="Klaviyo" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
+                    <img src="/images/tools/stripe.svg" alt="Stripe" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
+                  </>
+                )}
+                {index === 2 && (
+                  <>
+                    <img src="/images/tools/stripe.svg" alt="Stripe" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
+                    <img src="/images/tools/shiprocket.svg" alt="Shiprocket" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
+                    <img src="/images/tools/google-analytics.svg" alt="Google Analytics" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
+                  </>
+                )}
+              </div>
             </div>
           ))}
         </div>
-
-        {/* Optional Add-ons Note */}
-        <p className="mt-8 text-center text-neutral-500 text-sm">
-          Optional add-ons: SEO + AEO
-        </p>
 
         {/* CTA Button */}
         <div className="mt-8 text-center">
