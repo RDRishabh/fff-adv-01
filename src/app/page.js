@@ -12,6 +12,7 @@ import Testimonials from "./sections/Testimonials/Testimonials.section";
 import Examples from "./sections/Examples/Examples.section";
 import HowItWorks from "./sections/HowItWorks/HowItWorks.section";
 import Offer from "./sections/Offer/Offer.section";
+import ImageSlideshowSection from "./sections/ImageSlideShowSection/ImageSlideShowSection";
 import FAQ from "./sections/FAQ/FAQ.section";
 import FinalCTA from "./sections/FinalCTA/FinalCTA.section";
 
@@ -27,8 +28,9 @@ export default function HomePage() {
       </section>
 
       {/* QUICK SELECTOR */}
-      <QuickSelector />
+      {/* <QuickSelector /> */}
 
+      <ImageSlideshowSection/>
       {/* PROBLEMS */}
       <ProblemSelection />
 
