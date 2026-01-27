@@ -1,28 +1,29 @@
+"use client";
+
 const solutions = [
   {
     title: "Professionally built Shopify pages",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
-      </svg>
-    ),
+    tools: [
+      { src: "/images/tools/shopify.png", alt: "Shopify" },
+      { src: "/images/tools/figma.png", alt: "Figma" },
+      { src: "/images/tools/photoshop.png", alt: "Photoshop" },
+    ],
   },
   {
     title: "Clean apps + key integrations",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.39 48.39 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 005.427-.63 48.05 48.05 0 00.582-4.717.532.532 0 00-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.96.401v0a.656.656 0 00.658-.663 48.422 48.422 0 00-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 01-.61-.58v0z" />
-      </svg>
-    ),
+    tools: [
+      { src: "/images/tools/zapier.png", alt: "Zapier" },
+      { src: "/images/tools/razorpay.jpg", alt: "Klaviyo" },
+      { src: "/images/tools/stripe.png", alt: "Stripe" },
+    ],
   },
   {
     title: "Payments, shipping, analytics setup",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
-      </svg>
-    ),
+    tools: [
+      { src: "/images/tools/stripe.png", alt: "Stripe" },
+      { src: "/images/tools/shiprocket.jpg", alt: "Shiprocket" },
+      { src: "/images/tools/google_analytics.png", alt: "Google Analytics" },
+    ],
   },
 ];
 
@@ -32,7 +33,6 @@ export default function SolutionSnapshot() {
       <div className="mx-auto max-w-7xl px-4">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight">
             What FFF does
           </h2>
@@ -41,43 +41,33 @@ export default function SolutionSnapshot() {
           </p>
         </div>
 
-        {/* Solution Tiles */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Solution Tiles with animation */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {solutions.map((solution, index) => (
             <div
               key={index}
-              className="bg-[#ff7a00] rounded-2xl p-8 md:p-10 text-white flex flex-col items-center"
+              className="bg-[#ff7a00] rounded-3xl p-8 md:p-12 text-white flex flex-col items-center shadow-2xl transform transition duration-500 hover:scale-105 hover:shadow-3xl animate-fadein group relative overflow-hidden"
+              style={{ animationDelay: `${index * 180}ms`, animationFillMode: 'both' }}
             >
-              {/* Icon */}
-              <div className="mb-4">{solution.icon}</div>
+              {/* Animated background accent */}
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl z-0 group-hover:scale-110 transition-transform duration-500" />
+              {/* Tool Logos with floating animation */}
+              <div className="flex flex-row flex-wrap gap-5 justify-center items-center mt-2 mb-8 z-10 relative">
+                {solution.tools.map((tool, i) => (
+                  <div key={i} className="relative">
+                    <img
+                      src={tool.src}
+                      alt={tool.alt}
+                      className="h-14 w-14 bg-white rounded-full p-2 shadow-xl border-2 border-white transition-transform duration-300 group-hover:scale-110 animate-float"
+                      style={{ animationDelay: `${i * 120}ms` }}
+                    />
+                  </div>
+                ))}
+              </div>
               {/* Title */}
-              <p className="text-lg md:text-xl font-normal leading-relaxed text-center mb-4">
+              <p className="text-xl md:text-2xl font-medium text-center mb-2 z-10 relative drop-shadow-md">
                 {solution.title}
               </p>
-              {/* Tool Logos */}
-              <div className="flex flex-row flex-wrap gap-2 justify-center items-center mt-auto">
-                {index === 0 && (
-                  <>
-                    <img src="/images/tools/shopify.svg" alt="Shopify" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
-                    <img src="/images/tools/figma.svg" alt="Figma" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
-                    <img src="/images/tools/photoshop.svg" alt="Photoshop" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
-                  </>
-                )}
-                {index === 1 && (
-                  <>
-                    <img src="/images/tools/zapier.svg" alt="Zapier" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
-                    <img src="/images/tools/klaviyo.svg" alt="Klaviyo" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
-                    <img src="/images/tools/stripe.svg" alt="Stripe" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
-                  </>
-                )}
-                {index === 2 && (
-                  <>
-                    <img src="/images/tools/stripe.svg" alt="Stripe" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
-                    <img src="/images/tools/shiprocket.svg" alt="Shiprocket" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
-                    <img src="/images/tools/google-analytics.svg" alt="Google Analytics" className="h-7 w-7 bg-white rounded-full p-1 shadow" />
-                  </>
-                )}
-              </div>
             </div>
           ))}
         </div>
@@ -92,6 +82,24 @@ export default function SolutionSnapshot() {
           </a>
         </div>
       </div>
+      {/* Animation keyframes for fade-in */}
+      <style jsx>{`
+        @keyframes fadein {
+          0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fadein {
+          animation: fadein 0.9s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes float {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0); }
+        }
+        .animate-float {
+          animation: float 2.2s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 }

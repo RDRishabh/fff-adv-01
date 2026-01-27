@@ -30,18 +30,18 @@ export default function Hero() {
           {/* LEFT COPY */}
           <div className="w-full text-center lg:text-left">
             <p className="text-3xl sm:text-4xl lg:text-6xl font-base leading-tight tracking-tight text-black">
-              <span className="font-semibold">Launch</span> a <br />
-              <span className="font-semibold">Professionally</span> built{" "}
-              <span className="inline-flex align-middle mx-1">
+              <span className="">Launch</span> a <br />
+              <span className="font-medium">Professionally</span> built{" "} <br/>
+              <span className="inline-flex align-middle mx-1"> 
                 <img
                   src="/images/shopify.png"
                   alt="Shopify logo"
                   className="h-[1em] w-auto"
                 />
               </span>
-              <span className="font-semibold">Shopify store </span> 
+              <span className="font-medium">Shopify store </span> 
               {/* <br className="hidden sm:block" /> */}
-              that <span className="font-semibold">converts.</span>
+              that <span className="font-medium">converts.</span>
             </p>
 
             <p className="mt-5 sm:mt-6 text-base sm:text-lg text-neutral-400">
@@ -49,7 +49,7 @@ export default function Hero() {
             </p>
 
             {/* CTA */}
-            <div className="mt-8 flex justify-start">
+            <div className="mt-8 flex justify-center lg:justify-start lg:justify-start">
               <a
                 href="#book-call"
                 className="w-full sm:w-auto rounded-full bg-[#ff7a00] px-6 sm:px-8 py-3 text-base sm:text-lg font-medium text-white hover:bg-[#e66d00] transition inline-flex items-center justify-center gap-2"

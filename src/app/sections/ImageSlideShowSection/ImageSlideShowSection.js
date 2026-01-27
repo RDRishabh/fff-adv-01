@@ -10,21 +10,42 @@ const slides = [
   "/images/section/slide07.png",
 ];
 
-const SLIDE_WIDTH = 276; // 260 + 16 gap
-const SPEED = 0.35;
+const BASE_SLIDE_WIDTH = 260;
+const SLIDE_GAP = 16;
+const SPEED = 0.7;
+
+// Responsive slide width based on window size
+function getSlideWidth() {
+  if (typeof window !== 'undefined') {
+    if (window.innerWidth < 640) return 180 + SLIDE_GAP; // mobile
+    if (window.innerWidth < 1024) return 220 + SLIDE_GAP; // tablet
+  }
+  return BASE_SLIDE_WIDTH + SLIDE_GAP; // desktop
+}
+
 
 export default function ImageSlideshowSection() {
   const trackRef = useRef(null);
   const rafRef = useRef(null);
   const containerRef = useRef(null);
 
+  const [slideWidth, setSlideWidth] = useState(getSlideWidth());
   const [offset, setOffset] = useState(
-    slides.length * SLIDE_WIDTH // start at middle set
+    slides.length * getSlideWidth() // start at middle set
   );
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
 
-  const totalWidth = slides.length * SLIDE_WIDTH;
+  const totalWidth = slides.length * slideWidth;
+
+  /* ---------- HANDLE RESIZE ---------- */
+  useEffect(() => {
+    function handleResize() {
+      setSlideWidth(getSlideWidth());
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   /* ---------- AUTO SCROLL ---------- */
   useEffect(() => {
@@ -36,7 +57,7 @@ export default function ImageSlideshowSection() {
     rafRef.current = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(rafRef.current);
-  }, []);
+  }, [slideWidth]);
 
   /* ---------- NORMALIZE OFFSET ---------- */
   useEffect(() => {
@@ -50,11 +71,11 @@ export default function ImageSlideshowSection() {
 
   /* ---------- MANUAL CONTROLS ---------- */
   const handlePrev = () => {
-    setOffset((prev) => prev - SLIDE_WIDTH);
+    setOffset((prev) => prev - slideWidth);
   };
 
   const handleNext = () => {
-    setOffset((prev) => prev + SLIDE_WIDTH);
+    setOffset((prev) => prev + slideWidth);
   };
 
   // Show arrows only when mouse is near left/right edge
@@ -75,7 +96,7 @@ export default function ImageSlideshowSection() {
 
   return (
     <section
-      className="relative w-full py-24 overflow-hidden"
+      className="relative w-full py-16 sm:py-20 md:py-24 overflow-hidden"
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -84,7 +105,7 @@ export default function ImageSlideshowSection() {
       {showLeft && (
         <button
           onClick={handlePrev}
-          className="absolute left-8 top-1/2 -translate-y-1/2 z-20 rounded-full bg-black/40 p-3 text-white backdrop-blur-md hover:bg-black/60"
+          className="absolute left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 rounded-full bg-black/40 p-2 sm:p-3 text-white backdrop-blur-md hover:bg-black/60"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <polyline points="15 18 9 12 15 6" />
@@ -96,15 +117,21 @@ export default function ImageSlideshowSection() {
       <div className="w-full">
         <div
           ref={trackRef}
-          className="flex gap-4 will-change-transform"
+          className="flex gap-2 sm:gap-4 will-change-transform"
           style={{
-            transform: `translateX(calc(50% - ${offset}px - 130px))`,
+            transform: `translateX(calc(50% - ${offset}px - ${(slideWidth / 2)}px))`,
           }}
         >
           {infiniteSlides.map((src, i) => (
             <div
               key={i}
-              className="w-[260px] h-[520px] min-w-[260px] rounded-[2.5rem] bg-transparent overflow-hidden border border-neutral-200 shadow-2xl"
+              style={{
+                width: slideWidth - SLIDE_GAP,
+                minWidth: slideWidth - SLIDE_GAP,
+                height: 520, // Default desktop height
+                borderRadius: '2.5rem', // Default desktop radius
+              }}
+              className="bg-transparent overflow-hidden border border-neutral-200 shadow-2xl transition-all duration-300"
             >
               <img
                 src={src}
@@ -121,7 +148,7 @@ export default function ImageSlideshowSection() {
       {showRight && (
         <button
           onClick={handleNext}
-          className="absolute right-8 top-1/2 -translate-y-1/2 z-20 rounded-full bg-black/40 p-3 text-white backdrop-blur-md hover:bg-black/60"
+          className="absolute right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 rounded-full bg-black/40 p-2 sm:p-3 text-white backdrop-blur-md hover:bg-black/60"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <polyline points="9 18 15 12 9 6" />
