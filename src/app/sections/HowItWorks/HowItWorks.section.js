@@ -3,33 +3,33 @@
 const steps = [
   {
     number: "01",
-    title: "Discovery & Audit",
+    title: " Strategy call & plan",
     description:
-      "We dive deep into your analytics, heatmap data, and existing tech stack to find the low-hanging fruit and major leaks.",
+      "We review your current store, understand your numbers, and plan the new structure.",
     color: "bg-[#ff7a00]",
     textColor: "text-white",
   },
   {
     number: "02",
-    title: "Conversion Design",
+    title: "Wireframes & design",
     description:
-      "Our designers craft a mobile-first UI tailored for your specific audience. No generic templates, just science-backed design.",
+      "We map out your key pages and how they should look, feel, and flow for conversions.",
     color: "bg-neutral-900",
     textColor: "text-white",
   },
   {
     number: "03",
-    title: "Performance Build",
+    title: "Build sprint",
     description:
-      "Clean, optimized code implementation on Shopify. We cut out the bloat and ensure sub-2s load times on 4G networks.",
+      "We build on Shopify, set up apps, and connect payments, shipping, and tracking.",
     color: "bg-[#ff7a00]/20",
     textColor: "text-neutral-900",
   },
   {
     number: "04",
-    title: "Launch & Optimize",
+    title: "QA, launch & handover",
     description:
-      "We push live, set up advanced tracking, and begin the post-launch monitoring phase to ensure everything is scaling correctly.",
+      "We test everything, launch the store, and walk you through how to use and update it.",
     color: "bg-[#0047FF]",
     textColor: "text-white",
   },

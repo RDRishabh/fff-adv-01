@@ -13,7 +13,7 @@ const solutionCards = [
     tag: 'CVR↑',
     tagColor: 'bg-white text-[#2563EB] border border-[#E5EAF6]',
     title: 'Conversion–Focused UI',
-    desc: 'We design for the thumb, not the desktop. Mobile-first experiences that make buying effortless.'
+    desc: 'Make your pages clear and trustworthy so more visitors turn into buyers.'
   },
   {
     icon: (
@@ -26,7 +26,7 @@ const solutionCards = [
     tag: 'Speed↑',
     tagColor: 'bg-white text-[#FF7A00] border border-[#FFEAD1]',
     title: 'Performance Code',
-    desc: 'Fast stores sell more. We cut the bloat and optimize for sub–2s load times on mobile.'
+    desc: 'Fix your tracking so you know exactly which ads and products are profitable.'
   },
   {
     icon: (
@@ -39,7 +39,7 @@ const solutionCards = [
     tag: 'AOV↑',
     tagColor: 'bg-white text-[#22C55E] border border-[#D1FADF]',
     title: 'Average Order Value',
-    desc: 'Smart bundles and post–purchase upsells that turn $50 customers into $100 fans.'
+    desc: 'Increase AOV with smart bundles, upsells, and better offer positioning.'
   },
   {
     icon: (
@@ -52,7 +52,7 @@ const solutionCards = [
     tag: 'CAC↓',
     tagColor: 'bg-white text-[#8B5CF6] border border-[#E9D5FF]',
     title: 'Lower Acquisition Costs',
-    desc: 'Higher conversion means lower CPA. Your ad budget goes twice as far with the same traffic.'
+    desc: 'Remove bloat and set up a lean tech stack so your store stays fast as you scale.'
   },
 ];
 
@@ -66,7 +66,7 @@ export default function SolutionSnapshot() {
             What <span className="text-[#2563EB]">FFF</span> does?
           </h2>
           <p className="mt-2 max-w-2xl mx-auto text-neutral-600 text-md md:text-lg leading-relaxed">
-            Key solutions we provide to help your store convert and scale.
+            We turn your Shopify store into a clean, fast sales machine for paid traffic.
           </p>
         </div>
 
@@ -98,7 +98,7 @@ export default function SolutionSnapshot() {
             href="#book-call"
             className="inline-flex items-center justify-center rounded-full bg-[#ff7a00] px-10 py-4 text-base font-semibold text-white transition hover:bg-[#e66e00] shadow-lg hover:shadow-xl"
           >
-            Book a Call
+            Book a free store check
           </a>
         </div>
       </div>

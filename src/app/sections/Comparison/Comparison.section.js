@@ -1,33 +1,28 @@
 const comparisonData = [
   {
     feature: "Goal",
-    fff: "Convert and scale",
-    typical: "Look good",
+    fff: "Built to convert and scale paid ads.",
+    typical: "Built to look nice and fill a portfolio.",
   },
   {
     feature: "Product page",
-    fff: "Clarity & trust",
-    typical: "Basic template",
+    fff: "Clear story, benefits, proof, and objections handled.",
+    typical: "Basic theme sections with filler text.",
   },
   {
     feature: "Apps + integrations",
-    fff: "Clean stack",
-    typical: "Bloated & slow",
+    fff: "Only what you need to sell and track properly.",
+    typical: "Bloated setups that slow everything down.",
   },
   {
     feature: "Speed",
-    fff: "Optimized",
-    typical: "Often ignored",
-  },
-  {
-    feature: "Payments + shipping",
-    fff: "Setup correctly",
-    typical: "DIY configuration",
+    fff: "Fast loads for better user experience and ad performance.",
+    typical: "Speed is an afterthought.",
   },
   {
     feature: "Analytics + tracking",
-    fff: "Clear data",
-    typical: "Broken or missing",
+    fff: "Clean events so you know what’s working.",
+    typical: "Incomplete or broken data you can’t trust.",
   },
 ];
 

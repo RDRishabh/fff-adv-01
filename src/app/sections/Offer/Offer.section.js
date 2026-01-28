@@ -17,7 +17,7 @@ export default function Offer() {
               Start with a free store check.
             </h2>
             <p className="text-neutral-600 text-lg leading-relaxed mb-8">
-              We'll tell you what's blocking orders — no strings attached.
+              We’ll quickly review your store, show you what’s blocking sales, and outline what needs to change so you can scale ads with confidence no pressure, no hard pitch.
             </p>
 
             {/* Trust indicators */}

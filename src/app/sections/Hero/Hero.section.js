@@ -31,7 +31,7 @@ export default function Hero() {
           <div className="w-full text-center lg:text-left">
             <p className="text-3xl sm:text-4xl lg:text-6xl font-base leading-tight tracking-tight text-black">
               <span className="">Launch</span> a <br />
-              <span className="font-medium">Professionally</span> built{" "} <br/>
+              {/* <span className="font-medium">Professionally</span> built{" "} <br/> */}
               <span className="inline-flex align-middle mx-1"> 
                 <img
                   src="/images/shopify.png"
@@ -39,13 +39,13 @@ export default function Hero() {
                   className="h-[1em] w-auto"
                 />
               </span>
-              <span className="font-medium">Shopify store </span> 
+              <span className="font-medium">Shopify store </span>  that’s <span className="font-medium">built to sell, </span> 
               {/* <br className="hidden sm:block" /> */}
-              that <span className="font-medium">converts.</span>
+               not just  <span className="font-medium">look pretty.</span>
             </p>
 
             <p className="mt-5 sm:mt-6 text-base sm:text-lg text-neutral-400">
-              Built for D2C founders launching or upgrading before scaling ads.
+              We set up (or rebuild) your store so you can scale paid ads to 3–5x ROAS without worrying about leaks in the funnel. 
             </p>
 
             {/* CTA */}
@@ -54,7 +54,7 @@ export default function Hero() {
                 href="#book-call"
                 className="w-full sm:w-auto rounded-full bg-[#ff7a00] px-6 sm:px-8 py-3 text-base sm:text-lg font-medium text-white hover:bg-[#e66d00] transition inline-flex items-center justify-center gap-2"
               >
-                Book a FREE consultation today
+                Book a free store check
                 <svg
                   width="22"
                   height="22"
@@ -72,7 +72,7 @@ export default function Hero() {
 
             {/* TRUST PILLS */}
             <div className="mt-6 sm:mt-8 flex flex-row flex-wrap gap-3 sm:gap-4 items-center justify-center lg:justify-start">
-              {["Shopify-First", "Fast Delivery", "Conversion Focused"].map((text) => (
+              {["Shopify‑first builds", "Fast turnaround", "Conversion‑focused for paid traffic"].map((text) => (
                 <span
                   key={text}
                   className="flex items-center bg-[#C6F6D5] rounded-md px-3 py-2 text-green-700 text-sm sm:text-base font-medium shadow-sm"

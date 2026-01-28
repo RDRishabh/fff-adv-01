@@ -10,18 +10,10 @@ export default function FitCheckSection() {
           {/* LEFT */}
           <div className="flex flex-col justify-center h-full">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight">
-              Let’s make sure <br />
-              <span className="text-[#2563EB]">we’re a good match</span>
+              Who we’re a good fit for <br />
+              <span className="text-[#2563EB]">(and who we’re not) </span>
             </h2>
 
-            <p className="mt-6 text-neutral-600 max-w-xl text-lg leading-relaxed">
-              We work best with brands that already have momentum and want to
-              scale intentionally — not gamble with ad spend.
-            </p>
-
-            <p className="mt-4 text-neutral-500 max-w-xl">
-              This helps us stay focused on results, not busywork.
-            </p>
           </div>
 
           {/* RIGHT – CARD */}
@@ -41,11 +33,9 @@ export default function FitCheckSection() {
 
                   <ul className="mt-6 space-y-5">
                     {[
-                      "Shopify store doing $10K–$50K/month",
-                      "Running paid ads but ROAS is stagnant",
-                      "Selling a physical D2C product",
-                      "Ready to invest in a premium build",
-                      "Wants a long-term partner",
+                      "You’re a US‑based D2C brand doing around 1 year or 7-8/months.",
+                      "You already run or plan to run paid ads on Meta/Google.",
+                      "You’re ready to invest once in a store that can support growth for the next 12–24 months.",
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start gap-4">
                         <span className="mt-1 w-6 h-6 rounded-full bg-[#D1FAE5] flex items-center justify-center text-[#16A34A] text-sm font-bold shadow">
@@ -67,11 +57,9 @@ export default function FitCheckSection() {
 
                   <ul className="mt-6 space-y-5">
                     {[
-                      "Just starting out (zero sales)",
-                      "Dropshipping without brand moat",
-                      "Looking for a cheap $500 site",
-                      "No plan to run paid traffic",
-                      "Prefers micromanagement",
+                      "You’re just testing a product with no clear budget for traffic.",
+                      "You need a super‑custom app or marketplace build.",
+                      "You’re not focused on marketing and growth right now.",
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start gap-4">
                         <span className="mt-1 w-6 h-6 rounded-full bg-[#FEE2E2] flex items-center justify-center text-[#DC2626] text-sm font-bold shadow">

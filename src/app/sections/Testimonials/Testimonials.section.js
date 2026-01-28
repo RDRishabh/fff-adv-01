@@ -8,7 +8,7 @@ const testimonials = [
     rating: 5,
     text: "Working with FFF was a game-changer for Monarque. The new site is fast, beautiful, and our conversions are up!",
     date: "Jan 10, 2026",
-    chart: null,
+    highlight: "Increased 62% CTR in 6 weeks",
   },
   {
     name: "Nankie Bawa",
@@ -17,7 +17,7 @@ const testimonials = [
     rating: 5,
     text: "FFF understood our vision for Kind Matter and brought it to life. The process was smooth and the results speak for themselves.",
     date: "Dec 18, 2025",
-    chart: null,
+    highlight: "Revenue up 48% post-launch",
   },
   {
     name: "Hikki & Marieta",
@@ -26,7 +26,7 @@ const testimonials = [
     rating: 5,
     text: "Ninecamp's online presence is now world-class. FFF's attention to detail and support was outstanding.",
     date: "Nov 22, 2025",
-    chart: null,
+    highlight: "Bounce rate reduced by 35%",
   },
   {
     name: "Team, Nova Watches",
@@ -35,7 +35,7 @@ const testimonials = [
     rating: 5,
     text: "Nova Watches has seen a huge boost in customer engagement since our new site launched. Highly recommend FFF!",
     date: "Oct 15, 2025",
-    chart: null,
+    highlight: "Engagement increased 2.1×",
   },
   {
     name: "Team, Trucare",
@@ -44,7 +44,7 @@ const testimonials = [
     rating: 5,
     text: "FFF made the Trucare site launch seamless. The team is professional, creative, and always available for support.",
     date: "Sep 30, 2025",
-    chart: null,
+    highlight: "3 weeks ahead of schedule",
   },
   {
     name: "Team, Vratam",
@@ -53,7 +53,7 @@ const testimonials = [
     rating: 5,
     text: "Our brand story finally shines online thanks to FFF. The site is easy to manage and our customers love it!",
     date: "Sep 10, 2025",
-    chart: null,
+    highlight: "Customer retention up 29%",
   },
 ];
 
@@ -88,9 +88,16 @@ const TestimonialCard = ({ testimonial }) => (
     <div className="flex-1">
       <p className="text-[#333333] leading-relaxed font-medium text-sm pb-2 mb-3">{testimonial.text}</p>
     </div>
-    
+    {/* Highlight / Result box */}
+    {testimonial.highlight && (
+      <div className="mt-auto mb-8">
+        <div className="inline-flex items-center rounded-full bg-[#2563EB]/10 px-4 py-1.5 text-sm font-semibold text-[#2563EB]">
+          {testimonial.highlight}
+        </div>
+      </div>
+    )}
     {/* Date */}
-    <div className="absolute left-6 bottom-4 text-xs text-black">{testimonial.date}</div>
+    {/* <div className="absolute left-6 bottom-4 text-xs text-black">{testimonial.date}</div> */}
   </div>
 );
 import React, { useEffect, useRef, useState } from "react";
@@ -187,7 +194,7 @@ export default function Testimonials() {
           </svg>
         </button>
 
-        <div className="overflow-hidden w-full">
+        <div className=" w-full">
           <div
             ref={trackRef}
             className="flex gap-8 will-change-transform"
