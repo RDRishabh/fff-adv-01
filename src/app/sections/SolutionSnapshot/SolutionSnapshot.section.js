@@ -75,8 +75,8 @@ export default function SolutionSnapshot() {
           {solutionCards.map((card, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-7 md:p-8 flex flex-col shadow-xl border border-[#F3F4F6] min-h-[220px] w-full md:w-[260px] lg:w-[280px]"
-              style={{ background: '#faebdc'}}
+              className="bg-white rounded-2xl p-7 md:p-8 flex flex-col shadow-xl border border-[#F3F4F6] min-h-[220px] w-full md:w-[320px] lg:w-[360px]"
+              style={{ }}
             >
               {/* Icon and Badge Row */}
               <div className="flex items-center justify-between gap-2">

@@ -3,7 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {
-  title: "FFF – Shopify Stores That Convert",
+  title: "French Fry Features – Shopify Stores That Convert",
   description:
     "Launch a professionally built Shopify store designed to convert and scale.",
 };

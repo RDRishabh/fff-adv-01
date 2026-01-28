@@ -10,7 +10,7 @@ export default function Footer() {
             {/* Brand + Email */}
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <img src="/logo.png" alt="FFF" className="h-10 w-auto" />
+                <img src="/logo.png" alt="French Fry Features" className="h-10 w-auto" />
               </div>
               <p className="mb-4 text-sm text-neutral-500">
                 Shopify stores built to convert and scale.
@@ -53,7 +53,7 @@ export default function Footer() {
           {/* Copyright */}
           <div className="mt-12 pt-8 border-t border-neutral-200 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-neutral-500">
-              © 2026 FFF. All rights reserved.
+              © 2026 French Fry Features. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-neutral-500">
               <a href="#" className="hover:text-neutral-800 transition">Privacy Policy</a>

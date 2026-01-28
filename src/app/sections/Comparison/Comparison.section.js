@@ -36,13 +36,13 @@ export default function Comparison() {
             <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 leading-tight">
               Why <span className="text-[#FF7A00]">Choose </span>Us?  
             </h2>
-            <p className="mt-4 text-neutral-600 leading-relaxed text-xs md:text-sm">
+            <p className="mt-4 text-neutral-600 leading-relaxed md:text-xl">
               Most stores are built to look good. We build them to convert and scale.
             </p>
             {/* CTA Button */}
             <a
               href="#book-call"
-              className="mt-5 inline-flex items-center justify-center w-full sm:w-auto rounded-full bg-[#FF7A00] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-800 shadow-lg"
+              className="mt-5 inline-flex items-center justify-center w-full sm:w-auto rounded-full bg-[#2563EB] px-6 py-2.5 text-xl font-medium text-white transition hover:bg-neutral-800 shadow-lg"
             >
               Book a Call
             </a>
@@ -72,7 +72,7 @@ export default function Comparison() {
                 >
                   {/* Feature Name */}
                   <div className="p-4 lg:p-5 flex items-center border-r border-neutral-300 flex-1 basis-[60px]">
-                    <span className="font-semibold text-neutral-900 text-xs lg:text-sm">{row.feature}</span>
+                    <span className="font-medium text-neutral-900 text-xs lg:text-lg">{row.feature}</span>
                   </div>
                   {/* FFF Column */}
                   <div className="p-4 lg:p-5 flex items-start gap-2 lg:gap-2 border-r border-neutral-300 bg-[#ff7a00]/10 flex-1 basis-[60px]">
@@ -81,7 +81,7 @@ export default function Comparison() {
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </span>
-                    <span className="text-neutral-700 text-xs lg:text-sm leading-relaxed">{row.fff}</span>
+                    <span className="text-neutral-700 text-md lg:text-lg leading-relaxed">{row.fff}</span>
                   </div>
                   {/* Typical Column */}
                   <div className="p-4 lg:p-5 flex items-start gap-2 lg:gap-2 flex-1 basis-[60px]">
@@ -91,7 +91,7 @@ export default function Comparison() {
                         <line x1="6" y1="6" x2="18" y2="18" />
                       </svg>
                     </span>
-                    <span className="text-neutral-500 text-xs lg:text-sm leading-relaxed">{row.typical}</span>
+                    <span className="text-neutral-500 text-md lg:text-lg leading-relaxed">{row.typical}</span>
                   </div>
                 </div>
               ))}

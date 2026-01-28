@@ -1,3 +1,12 @@
+import {
+  Paintbrush,
+  FileText,
+  CreditCard,
+  Layers,
+  BarChart3,
+} from "lucide-react";
+
+
 export default function ProblemSelection() {
   return (
     <section className="bg-[#FDF8F4] py-32">
@@ -14,7 +23,7 @@ export default function ProblemSelection() {
               </span>
             </h2>
 
-            <p className="mt-6 text-neutral-600 leading-relaxed max-w-xl">
+            <p className="mt-6 text-xl text-neutral-600 leading-relaxed max-w-xl">
               Great ads can’t save a weak store. If people don’t trust your site or don’t get your offer,
               they click, browse, and leave. We fix those leaks so your ad spend actually turns into sales.
             </p>
@@ -24,59 +33,41 @@ export default function ProblemSelection() {
                 {
                   title: "Your site looks DIY",
                   desc: "People don’t trust you enough to buy",
-                  icon: <path d="M16 16V8H8v8h8z" fill="#FFB155" />,
+                  icon: Paintbrush,
                 },
                 {
                   title: "Product pages are confusing",
                   desc: "Visitors don’t see why you’re worth the price",
-                  icon: (
-                    <>
-                      <rect x="8" y="8" width="8" height="8" rx="2" fill="#FFB155" />
-                      <rect x="10" y="10" width="4" height="4" rx="1" fill="#fff" />
-                    </>
-                  ),
+                  icon: FileText,
                 },
                 {
                   title: "Checkout feels risky",
                   desc: "They drop off right before paying",
-                  icon: (
-                    <>
-                      <rect x="8" y="8" width="8" height="8" rx="2" fill="#FFB155" />
-                      <rect x="10" y="10" width="4" height="4" rx="1" fill="#fff" />
-                    </>
-                  ),
+                  icon: CreditCard,
                 },
                 {
                   title: "Too many apps and pop-ups",
                   desc: "Store slows down and hurts your ad performance",
-                  icon: <path d="M8 16h8v-2H8v2zm0-4h8v-2H8v2zm0-4h8V6H8v2z" fill="#FFB155" />,
+                  icon: Layers,
                 },
                 {
                   title: "Tracking is messy",
                   desc: "You have no clear view of which ads are making money",
-                  icon: (
-                    <path
-                      d="M16 8l-8 8M8 8l8 8"
-                      stroke="#FFB155"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                  ),
+                  icon: BarChart3,
                 },
               ].map((item, idx) => (
                 <div
                   key={idx}
                   className="flex items-start gap-4 bg-white rounded-xl p-6 shadow-sm"
                 >
-                  <svg width="28" height="28" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="12" fill="#FFEAD1" />
-                    {item.icon}
-                  </svg>
+                  <div className="w-10 h-10 rounded-full bg-[#FFEAD1] flex items-center justify-center flex-shrink-0">
+                    <item.icon className="w-5 h-5 text-[#FF7A00]" strokeWidth={2.2} />
+                  </div>
                   <div>
-                    <div className="text-lg font-semibold text-neutral-900">
+                    <div className="text-2xl font-semibold text-[#ef4444]">
                       {item.title}
                     </div>
-                    <div className="text-neutral-500">
+                    <div className="text-lg text-neutral-500">
                       {item.desc}
                     </div>
                   </div>
@@ -87,7 +78,7 @@ export default function ProblemSelection() {
             <div className="mt-12">
               <a
                 href="#book-call"
-                className="inline-flex items-center gap-2 rounded-full bg-[#ff7a00] px-8 py-3 text-lg font-medium text-white hover:bg-[#e66d00] transition"
+                className="inline-flex items-center gap-2 rounded-full bg-[#22C55E] px-8 py-3 text-lg font-medium text-white hover:bg-[#e66d00] transition"
               >
                 See what’s blocking your sales
                 <svg

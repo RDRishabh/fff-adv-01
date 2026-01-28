@@ -6,7 +6,7 @@ const testimonials = [
     title: "Founder, Monarque",
     avatar: "/images/testimonials/abhinavkapoor.jpeg",
     rating: 5,
-    text: "Working with FFF was a game-changer for Monarque. The new site is fast, beautiful, and our conversions are up!",
+    text: "Working with French Fry Features was a game-changer for Monarque. The new site is fast, beautiful, and our conversions are up!",
     date: "Jan 10, 2026",
     highlight: "Increased 62% CTR in 6 weeks",
   },
@@ -15,7 +15,7 @@ const testimonials = [
     title: "Founder, Kind Matter",
     avatar: "/images/testimonials/nankiebawa.jpeg",
     rating: 5,
-    text: "FFF understood our vision for Kind Matter and brought it to life. The process was smooth and the results speak for themselves.",
+    text: "French Fry Features understood our vision for Kind Matter and brought it to life. The process was smooth and the results speak for themselves.",
     date: "Dec 18, 2025",
     highlight: "Revenue up 48% post-launch",
   },
@@ -33,7 +33,7 @@ const testimonials = [
     title: "Team, Nova Watches",
     avatar: "/images/testimonials/novawatches.png",
     rating: 5,
-    text: "Nova Watches has seen a huge boost in customer engagement since our new site launched. Highly recommend FFF!",
+    text: "Nova Watches has seen a huge boost in customer engagement since our new site launched. Highly recommend French Fry Features!",
     date: "Oct 15, 2025",
     highlight: "Engagement increased 2.1×",
   },
@@ -42,7 +42,7 @@ const testimonials = [
     title: "Team, Trucare",
     avatar: "/images/testimonials/trucare.png",
     rating: 5,
-    text: "FFF made the Trucare site launch seamless. The team is professional, creative, and always available for support.",
+    text: "French Fry Features made the Trucare site launch seamless. The team is professional, creative, and always available for support.",
     date: "Sep 30, 2025",
     highlight: "3 weeks ahead of schedule",
   },
@@ -51,7 +51,7 @@ const testimonials = [
     title: "Team, Vratam",
     avatar: "/images/testimonials/vratam.png",
     rating: 5,
-    text: "Our brand story finally shines online thanks to FFF. The site is easy to manage and our customers love it!",
+    text: "Our brand story finally shines online thanks to French Fry Features. The site is easy to manage and our customers love it!",
     date: "Sep 10, 2025",
     highlight: "Customer retention up 29%",
   },
@@ -64,7 +64,7 @@ const StarIcon = () => (
 );
 
 const TestimonialCard = ({ testimonial }) => (
-  <div className="flex flex-col bg-white rounded-2xl p-6 shadow-lg border border-[#e5e7eb] w-full max-w-sm relative text-black">
+  <div className="flex flex-col bg-white rounded-2xl p-6 shadow-lg border-2 border-[#FF7A00] w-full max-w-sm relative text-black">
     {/* Author info */}
     <div className="flex items-center gap-3 mb-3">
       <img
@@ -86,12 +86,12 @@ const TestimonialCard = ({ testimonial }) => (
     </div>
     {/* Testimonial text */}
     <div className="flex-1">
-      <p className="text-[#333333] leading-relaxed font-medium text-sm pb-2 mb-3">{testimonial.text}</p>
+      <p className="text-[#333333] leading-relaxed font-medium text-xl pb-2 mb-3">{testimonial.text}</p>
     </div>
     {/* Highlight / Result box */}
     {testimonial.highlight && (
       <div className="mt-auto mb-8">
-        <div className="inline-flex items-center rounded-full bg-[#2563EB]/10 px-4 py-1.5 text-sm font-semibold text-[#2563EB]">
+        <div className="inline-flex items-center rounded-full bg-[#2563EB]/10 px-4 py-1.5 text-md font-semibold text-[#2563EB]">
           {testimonial.highlight}
         </div>
       </div>
@@ -170,7 +170,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-12 bg-white">
       <div className="mx-auto max-w-7xl px-4 mb-12 text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-black">
           Don't just take our <span className="text-[#2563EB]">word</span> for it.

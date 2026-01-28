@@ -32,9 +32,9 @@ export default function HomePage() {
       {/* QUICK SELECTOR */}
       {/* <QuickSelector /> */}
 
-      <ImageSlideshowSection/>
       {/* PROBLEMS */}
       <ProblemSelection />
+      <ImageSlideshowSection/>
 
       {/* SOLUTION */}
       <SolutionSnapshot />
