@@ -1,29 +1,58 @@
 "use client";
 
-const solutions = [
+
+const solutionCards = [
   {
-    title: "Professionally built Shopify pages",
-    tools: [
-      { src: "/images/tools/shopify.png", alt: "Shopify" },
-      { src: "/images/tools/figma.png", alt: "Figma" },
-      { src: "/images/tools/photoshop.png", alt: "Photoshop" },
-    ],
+    icon: (
+      <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#2563EB]">
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+          <path d="M7 17l5-10 5 10H7z" fill="#fff" />
+        </svg>
+      </span>
+    ),
+    tag: 'CVR↑',
+    tagColor: 'bg-white text-[#2563EB] border border-[#E5EAF6]',
+    title: 'Conversion–Focused UI',
+    desc: 'We design for the thumb, not the desktop. Mobile-first experiences that make buying effortless.'
   },
   {
-    title: "Clean apps + key integrations",
-    tools: [
-      { src: "/images/tools/zapier.png", alt: "Zapier" },
-      { src: "/images/tools/razorpay.jpg", alt: "Klaviyo" },
-      { src: "/images/tools/stripe.png", alt: "Stripe" },
-    ],
+    icon: (
+      <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#FF7A00]">
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+          <path d="M12 6v6l4 2" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+    ),
+    tag: 'Speed↑',
+    tagColor: 'bg-white text-[#FF7A00] border border-[#FFEAD1]',
+    title: 'Performance Code',
+    desc: 'Fast stores sell more. We cut the bloat and optimize for sub–2s load times on mobile.'
   },
   {
-    title: "Payments, shipping, analytics setup",
-    tools: [
-      { src: "/images/tools/stripe.png", alt: "Stripe" },
-      { src: "/images/tools/shiprocket.jpg", alt: "Shiprocket" },
-      { src: "/images/tools/google_analytics.png", alt: "Google Analytics" },
-    ],
+    icon: (
+      <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#22C55E]">
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+          <path d="M6 18l6-12 6 12H6z" fill="#fff" />
+        </svg>
+      </span>
+    ),
+    tag: 'AOV↑',
+    tagColor: 'bg-white text-[#22C55E] border border-[#D1FADF]',
+    title: 'Average Order Value',
+    desc: 'Smart bundles and post–purchase upsells that turn $50 customers into $100 fans.'
+  },
+  {
+    icon: (
+      <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#8B5CF6]">
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+          <path d="M12 17v-6m0 0V7m0 4h4m-4 0H8" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+    ),
+    tag: 'CAC↓',
+    tagColor: 'bg-white text-[#8B5CF6] border border-[#E9D5FF]',
+    title: 'Lower Acquisition Costs',
+    desc: 'Higher conversion means lower CPA. Your ad budget goes twice as far with the same traffic.'
   },
 ];
 
@@ -34,40 +63,30 @@ export default function SolutionSnapshot() {
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight">
-            What FFF does
+            What <span className="text-[#FF7A00]">FFF</span> does?
           </h2>
           <p className="mt-2 max-w-2xl mx-auto text-neutral-600 text-md md:text-lg leading-relaxed">
             Key solutions we provide to help your store convert and scale.
           </p>
         </div>
 
-        {/* Solution Tiles with animation */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {solutions.map((solution, index) => (
+        {/* Solution Cards Row, Orange Cards, No Outer Box */}
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full justify-center">
+          {solutionCards.map((card, idx) => (
             <div
-              key={index}
-              className="bg-[#ff7a00] rounded-3xl p-8 md:p-12 text-white flex flex-col items-center shadow-2xl transform transition duration-500 hover:scale-105 hover:shadow-3xl animate-fadein group relative overflow-hidden"
-              style={{ animationDelay: `${index * 180}ms`, animationFillMode: 'both' }}
+              key={idx}
+              className="bg-[#FF7A00] rounded-2xl p-7 md:p-8 flex flex-col shadow-xl border border-[#F3F4F6] min-h-[220px] w-full md:w-[260px] lg:w-[280px]"
             >
-              {/* Animated background accent */}
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl z-0 group-hover:scale-110 transition-transform duration-500" />
-              {/* Tool Logos with floating animation */}
-              <div className="flex flex-row flex-wrap gap-5 justify-center items-center mt-2 mb-8 z-10 relative">
-                {solution.tools.map((tool, i) => (
-                  <div key={i} className="relative">
-                    <img
-                      src={tool.src}
-                      alt={tool.alt}
-                      className="h-14 w-14 bg-white rounded-full p-2 shadow-xl border-2 border-white transition-transform duration-300 group-hover:scale-110 animate-float"
-                      style={{ animationDelay: `${i * 120}ms` }}
-                    />
-                  </div>
-                ))}
+              {/* Icon and Badge Row */}
+              <div className="flex items-center justify-between gap-2">
+                {card.icon}
+                <span className={`text-xs font-normal rounded-full px-3 py-1 bg-white text-black border-0`}>{card.tag}</span>
               </div>
-              {/* Title */}
-              <p className="text-xl md:text-2xl font-medium text-center mb-2 z-10 relative drop-shadow-md">
-                {solution.title}
-              </p>
+              {/* Title and Description */}
+              <div className="mt-4">
+                <div className="text-xl font-medium text-black">{card.title}</div>
+                <div className="mt-2 text-white text-base leading-relaxed">{card.desc}</div>
+              </div>
             </div>
           ))}
         </div>
@@ -82,24 +101,7 @@ export default function SolutionSnapshot() {
           </a>
         </div>
       </div>
-      {/* Animation keyframes for fade-in */}
-      <style jsx>{`
-        @keyframes fadein {
-          0% { opacity: 0; transform: translateY(40px) scale(0.98); }
-          100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .animate-fadein {
-          animation: fadein 0.9s cubic-bezier(0.4,0,0.2,1);
-        }
-        @keyframes float {
-          0% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-          100% { transform: translateY(0); }
-        }
-        .animate-float {
-          animation: float 2.2s ease-in-out infinite;
-        }
-      `}</style>
+      {/* No custom animation needed for new cards */}
     </section>
   );
 }

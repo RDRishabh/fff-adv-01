@@ -1,3 +1,5 @@
+"use client";
+
 const testimonials = [
   {
     name: "Abhinav Kapoor",
@@ -91,25 +93,125 @@ const TestimonialCard = ({ testimonial }) => (
     <div className="absolute left-6 bottom-4 text-xs text-black">{testimonial.date}</div>
   </div>
 );
+import React, { useEffect, useRef, useState } from "react";
+
+const SPEED = 0.35;
+const CARD_WIDTH = 340;
+const GAP = 32;
 
 export default function Testimonials() {
+  const trackRef = useRef(null);
+  const positionRef = useRef(0);
+
+  const [showLeft, setShowLeft] = useState(false);
+  const [showRight, setShowRight] = useState(false);
+
+  const items = [...testimonials, ...testimonials];
+  const totalCards = testimonials.length;
+  const totalWidth = (CARD_WIDTH + GAP) * totalCards;
+
+  // Auto-scroll animation
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let animationId;
+
+    const animate = () => {
+      positionRef.current += SPEED;
+
+      if (positionRef.current >= totalWidth) {
+        positionRef.current = 0;
+      }
+
+      track.style.transform = `translateX(-${positionRef.current}px)`;
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationId);
+  }, [totalWidth]);
+
+  // Arrow movement
+  const move = (dir) => {
+    positionRef.current += dir * (CARD_WIDTH + GAP);
+
+    if (positionRef.current < 0) {
+      positionRef.current = totalWidth - (CARD_WIDTH + GAP);
+    } else if (positionRef.current >= totalWidth) {
+      positionRef.current = 0;
+    }
+
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translateX(-${positionRef.current}px)`;
+    }
+  };
+
+  // Edge hover detection
+  const handleMouseMove = (e) => {
+    const bounds = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - bounds.left;
+    const edge = 60;
+
+    setShowLeft(x < edge);
+    setShowRight(x > bounds.width - edge);
+  };
+
+  const handleMouseLeave = () => {
+    setShowLeft(false);
+    setShowRight(false);
+  };
+
   return (
-    <section className="py-24 bg-white overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 mb-12">
-        {/* Header */}
-        <div className="text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-black mb-2">
-            See What Founders Say About Us
-          </h2>
-          {/* <div className="text-lg text-neutral-400 mb-2">What our clients say about us</div> */}
-        </div>
+    <section className="py-24 bg-white">
+      <div className="mx-auto max-w-7xl px-4 mb-12 text-center">
+        <h2 className="text-3xl md:text-5xl font-bold text-black">
+          Don't just take our <span className="text-[#2563EB]">word</span> for it.
+        </h2>
       </div>
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} />
-          ))}
+
+      <div
+        className="relative flex items-center justify-center"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Left Arrow */}
+        <button
+          onClick={() => move(-1)}
+          className={`absolute left-0 z-10 bg-white border-2 border-black rounded-full w-8 h-8 flex items-center justify-center shadow transition-all duration-300 top-1/2 -translate-y-1/2
+            ${showLeft ? 'opacity-100 translate-x-4' : 'opacity-0 pointer-events-none -translate-x-8'}`}
+          style={{ }}
+        >
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 8L12 16L20 24" stroke="#111" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+
+        <div className="overflow-hidden w-full">
+          <div
+            ref={trackRef}
+            className="flex gap-8 will-change-transform"
+            style={{ width: "max-content" }}
+          >
+            {items.map((testimonial, idx) => (
+              <div key={idx} style={{ width: CARD_WIDTH }} className="flex-shrink-0">
+                <TestimonialCard testimonial={testimonial} />
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* Right Arrow */}
+        <button
+          onClick={() => move(1)}
+          className={`absolute right-0 z-10 bg-white border-2 border-black rounded-full w-8 h-8 flex items-center justify-center shadow transition-all duration-300 top-1/2 -translate-y-1/2
+            ${showRight ? 'opacity-100 -translate-x-4' : 'opacity-0 pointer-events-none translate-x-8'}`}
+          style={{  }}
+        > 
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8L20 16L12 24" stroke="#111" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
       </div>
     </section>
   );

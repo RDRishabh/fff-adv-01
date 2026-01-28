@@ -100,9 +100,66 @@ export default function Hero() {
           </div>
 
           {/* RIGHT VISUAL PLACEHOLDER */}
-          <div className="w-full lg:w-[520px] flex justify-center lg:justify-end">
-            {/* animation / image slider goes here */}
-          </div>
+            <div className="w-full lg:w-[520px] flex justify-center lg:justify-end">
+              {/* Store Leak Scan Card UI */}
+              <div className="relative w-[370px] bg-white rounded-2xl shadow-xl p-7 pt-8">
+                {/* Monthly Rev Card */}
+                <div className="absolute -top-7 right-5 bg-white rounded-xl shadow-md px-5 py-3 flex items-center gap-3 border border-neutral-100">
+                  <span className="bg-[#E6F7F1] rounded-full p-2">
+                    <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
+                      <rect x="4" y="10" width="3" height="7" rx="1" fill="#22C55E" />
+                      <rect x="10.5" y="6" width="3" height="11" rx="1" fill="#22C55E" />
+                      <rect x="17" y="13" width="3" height="4" rx="1" fill="#22C55E" />
+                    </svg>
+                  </span>
+                  <div>
+                    <div className="text-xs text-neutral-400">Monthly Rev</div>
+                    <div className="text-lg font-semibold text-black">$48,200</div>
+                  </div>
+                </div>
+                {/* Card Content */}
+                <div className="space-y-2">
+                  <div className="text-lg font-semibold text-black mb-2">Store Leak Scan</div>
+                  {/* Mobile Loading Speed */}
+                  <div className="flex items-center justify-between bg-neutral-50 rounded-lg px-4 py-3">
+                    <div>
+                      <div className="text-xs text-neutral-400">Mobile Loading Speed</div>
+                      <div className="text-lg font-normal text-black">3.2s</div>
+                    </div>
+                    <span className="bg-[#FFE5E5] text-[#E53E3E] text-xs font-semibold px-3 py-1 rounded-full">Critical</span>
+                  </div>
+                  {/* Cart Abandonment */}
+                  <div className="flex items-center justify-between bg-neutral-50 rounded-lg px-4 py-3">
+                    <div>
+                      <div className="text-xs text-neutral-400">Cart Abandonment</div>
+                      <div className="text-lg font-normal text-black">82%</div>
+                    </div>
+                    <span className="text-[#F59E42] text-xs font-semibold">High</span>
+                  </div>
+                  {/* CTA Placement */}
+                  <div className="flex items-center justify-between bg-neutral-50 rounded-lg px-4 py-3">
+                    <div>
+                      <div className="text-xs text-neutral-400">CTA Placement</div>
+                      <div className="text-lg font-normal text-black">Poor</div>
+                    </div>
+                    <span className="bg-[#FFF7E5] text-[#E6A100] text-xs font-semibold px-3 py-1 rounded-full">Warning</span>
+                  </div>
+                  {/* Potential ROAS Lift */}
+                  <div className="mt-3 bg-[#F6F9FF] rounded-xl px-4 py-5 flex items-center gap-3 border border-[#D6E6FF]">
+                    <span className="bg-white rounded-full p-2 border border-[#D6E6FF]">
+                      <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                        <circle cx="10" cy="10" r="10" fill="#2563EB" />
+                        <path d="M10 5v5l3 3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <div>
+                      <div className="text-xs text-[#2563EB] font-semibold">Potential ROAS Lift</div>
+                      <div className="text-2xl font-bold text-[#2563EB]">+140%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
         </div>
       </div>
