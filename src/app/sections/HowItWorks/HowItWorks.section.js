@@ -51,9 +51,9 @@ export default function HowItWorks() {
 
         {/* Desktop Timeline */}
         <div className="hidden md:block relative">
-          <div className="relative">
+          <div className="relative min-h-[420px]">
             {/* Week Labels */}
-            <div className="grid grid-cols-4 mb-8 border-b border-neutral-200 pb-4">
+            <div className="grid grid-cols-4  border-b border-neutral-200 pb-4">
               {["Week 1", "Week 2", "Week 3", "Week 4"].map((week) => (
                 <div key={week} className="text-center">
                   <span className="text-lg font-semibold text-neutral-800">
@@ -62,19 +62,32 @@ export default function HowItWorks() {
                 </div>
               ))}
             </div>
+            {/* Open-ended background grid */}
+            <div className="absolute top-[72px] left-0 right-0 bottom-0 pointer-events-none">
+              {/* Vertical dividers (between weeks) */}
+              <div className="absolute inset-0 grid grid-cols-4">
+                {[0, 1, 2].map((i) => (
+                  <div
+                    key={i}
+                    className="border-r border-neutral-200/60"
+                  />
+                ))}
+              </div>
 
-            {/* Vertical grid lines */}
-            <div className="absolute top-8 left-0 right-0 bottom-0 grid grid-cols-4 pointer-events-none">
-              {[0, 1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="border-l border-neutral-100 first:border-l-0"
-                />
-              ))}
+              {/* Horizontal dividers (between steps) */}
+              <div className="absolute inset-0 grid grid-rows-4">
+                {[0, 1, 2].map((i) => (
+                  <div
+                    key={i}
+                    className="border-b border-neutral-200/60"
+                  />
+                ))}
+              </div>
             </div>
 
+
             {/* Timeline bars */}
-            <div className="relative space-y-4">
+            <div className="relative space-y-6 z-10 mt-8">
               {steps.map((step, index) => (
                 <div
                   key={step.number}
@@ -87,9 +100,9 @@ export default function HowItWorks() {
                   <div
                     className={`${step.color} rounded-2xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow`}
                   >
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-1">
                       <span
-                        className={`${step.textColor} font-bold text-lg`}
+                        className={`${step.textColor} font-medium text-[22px]`}
                       >
                         {step.title}
                       </span>
@@ -100,7 +113,7 @@ export default function HowItWorks() {
 
                     {/* Description now visible on desktop */}
                     <p
-                      className={`text-sm leading-relaxed ${
+                      className={`text-lg leading-relaxed ${
                         step.textColor === "text-white"
                           ? "text-white/90"
                           : "text-neutral-700"
@@ -156,13 +169,13 @@ export default function HowItWorks() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <p className="text-neutral-600 mb-6">
+        <div className="text-center mt-8">
+          <p className="text-lg text-neutral-600 mb-6">
             We take limited builds per week to keep quality high.
           </p>
           <a
             href="#book-call"
-            className="inline-flex items-center justify-center rounded-full bg-[#ff7a00] px-10 py-4 text-base font-semibold text-white transition hover:bg-[#e66e00] shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center rounded-full bg-[#22C55E] px-10 py-4 text-xl font-semibold text-white transition hover:bg-[#e66e00] shadow-lg hover:shadow-xl"
           >
             Book a Call
           </a>

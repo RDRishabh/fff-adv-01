@@ -1,58 +1,60 @@
 "use client";
 
+import {
+  TrendingUp,
+  Zap,
+  ShoppingCart,
+  DollarSign,
+} from "lucide-react";
 
 const solutionCards = [
   {
-    icon: (
-      <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#2563EB]">
-        <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
-          <path d="M7 17l5-10 5 10H7z" fill="#fff" />
-        </svg>
-      </span>
+    icon: <TrendingUp size={26} className="text-[#2563EB]" />,
+    tag: (
+      <>
+        CVR <span className="ml-1 text-xl font-extrabold">↑</span>
+      </>
     ),
-    tag: 'CVR↑',
-    tagColor: 'bg-white text-[#2563EB] border border-[#E5EAF6]',
-    title: 'Conversion–Focused UI',
-    desc: 'Make your pages clear and trustworthy so more visitors turn into buyers.'
+    tagColor: "bg-white text-[#2563EB] border border-[#E5EAF6]",
+    bg: "bg-[#EFF6FF]",
+    title: "Conversion-Focused UI",
+    desc: "Make your pages clear and trustworthy so more visitors turn into buyers.",
   },
   {
-    icon: (
-      <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#FF7A00]">
-        <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
-          <path d="M12 6v6l4 2" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </span>
+    icon: <Zap size={26} className="text-[#FF7A00]" />,
+    tag: (
+      <>
+        Speed <span className="ml-1 text-xl font-extrabold">↑</span>
+      </>
     ),
-    tag: 'Speed↑',
-    tagColor: 'bg-white text-[#FF7A00] border border-[#FFEAD1]',
-    title: 'Performance Code',
-    desc: 'Fix your tracking so you know exactly which ads and products are profitable.'
+    tagColor: "bg-white text-[#FF7A00] border border-[#FFEAD1]",
+    bg: "bg-[#FFF4EC]",
+    title: "Performance Code",
+    desc: "Optimize load time and execution so paid traffic converts without friction.",
   },
   {
-    icon: (
-      <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#22C55E]">
-        <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
-          <path d="M6 18l6-12 6 12H6z" fill="#fff" />
-        </svg>
-      </span>
+    icon: <ShoppingCart size={26} className="text-[#22C55E]" />,
+    tag: (
+      <>
+        AOV <span className="ml-1 text-xl font-extrabold">↑</span>
+      </>
     ),
-    tag: 'AOV↑',
-    tagColor: 'bg-white text-[#22C55E] border border-[#D1FADF]',
-    title: 'Average Order Value',
-    desc: 'Increase AOV with smart bundles, upsells, and better offer positioning.'
+    tagColor: "bg-white text-[#22C55E] border border-[#D1FADF]",
+    bg: "bg-[#ECFDF3]",
+    title: "Average Order Value",
+    desc: "Increase AOV with smart bundles, upsells, and better offer positioning.",
   },
   {
-    icon: (
-      <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#8B5CF6]">
-        <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
-          <path d="M12 17v-6m0 0V7m0 4h4m-4 0H8" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </span>
+    icon: <DollarSign size={26} className="text-[#8B5CF6]" />,
+    tag: (
+      <>
+        CAC <span className="ml-1 text-xl font-extrabold">↓</span>
+      </>
     ),
-    tag: 'CAC↓',
-    tagColor: 'bg-white text-[#8B5CF6] border border-[#E9D5FF]',
-    title: 'Lower Acquisition Costs',
-    desc: 'Remove bloat and set up a lean tech stack so your store stays fast as you scale.'
+    tagColor: "bg-white text-[#8B5CF6] border border-[#E9D5FF]",
+    bg: "bg-[#F5F3FF]",
+    title: "Lower Acquisition Costs",
+    desc: "Remove bloat and build a lean stack that stays fast as you scale.",
   },
 ];
 
@@ -61,48 +63,57 @@ export default function SolutionSnapshot() {
     <section className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4">
         {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900">
             What <span className="text-[#2563EB]">FFF</span> does?
           </h2>
-          <p className="mt-2 max-w-2xl mx-auto text-neutral-600 text-md md:text-lg leading-relaxed">
+          <p className="mt-3 max-w-2xl mx-auto text-neutral-600 text-xl">
             We turn your Shopify store into a clean, fast sales machine for paid traffic.
           </p>
         </div>
 
-        {/* Solution Cards Row, Website Vibe Palette */}
-        <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full justify-center">
+        {/* 2x2 Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {solutionCards.map((card, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-7 md:p-8 flex flex-col shadow-xl border border-[#F3F4F6] min-h-[220px] w-full md:w-[320px] lg:w-[360px]"
-              style={{ }}
+              className={`rounded-2xl px-8 py-4 shadow-lg border border-white/40 ${card.bg}`}
             >
-              {/* Icon and Badge Row */}
-              <div className="flex items-center justify-between gap-2">
-                {card.icon}
-                <span className={`text-xs font-semibold rounded-full px-3 py-1 ${card.tagColor}`}>{card.tag}</span>
+              {/* Icon + Tag */}
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white shadow-sm">
+                  {card.icon}
+                </span>
+                <span
+                  className={`text-md font-semibold rounded-full px-4 py-1 ${card.tagColor}`}
+                >
+                  {card.tag}
+                </span>
               </div>
-              {/* Title and Description */}
-              <div className="mt-4">
-                <div className="text-xl font-semibold text-neutral-900">{card.title}</div>
-                <div className="mt-2 text-neutral-600 text-base leading-relaxed">{card.desc}</div>
+
+              {/* Content */}
+              <div className="mt-6">
+                <p className="text-2xl font-semibold text-neutral-900">
+                  {card.title}
+                </p>
+                <p className="mt-1 text-lg text-neutral-700 leading-relaxed">
+                  {card.desc}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* CTA Button */}
-        <div className="mt-8 text-center">
+        {/* CTA */}
+        <div className="mt-12 text-center">
           <a
             href="#book-call"
-            className="inline-flex items-center justify-center rounded-full bg-[#ff7a00] px-10 py-4 text-base font-semibold text-white transition hover:bg-[#e66e00] shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center rounded-full bg-[#22C55E] px-10 py-4 text-lg font-semibold text-white transition hover:bg-[#e66e00] shadow-lg hover:shadow-xl"
           >
             Book a free store check
           </a>
         </div>
       </div>
-      {/* No custom animation needed for new cards */}
     </section>
   );
 }
