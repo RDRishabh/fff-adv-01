@@ -9,6 +9,8 @@ import {
   BarChart3,
 } from "lucide-react";
 
+import { motion } from "framer-motion";
+
 
 export default function ProblemSelection() {
   return (
@@ -86,7 +88,7 @@ export default function ProblemSelection() {
             <div className="mt-12">
               <a
                 href="#book-call"
-                className="inline-flex items-center gap-2 rounded-full bg-[#22C55E] px-8 py-3 text-lg font-medium text-white hover:bg-[#e66d00] transition"
+                className="inline-flex items-center gap-2 rounded-full bg-[#22C55E] px-8 py-3 text-xl font-medium text-white hover:bg-[#e66d00] transition"
               >
                 See what’s blocking your sales
                 <svg

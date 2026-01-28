@@ -56,11 +56,11 @@ export default function Comparison() {
               </div>
               <div className="p-4 lg:p-5 flex flex-col items-center justify-center rounded-t-2xl border-r border-t border-l border-neutral-300 bg-[#ff7a00]/10 flex-1 basis-[60px]">
                 <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-[#FFFFFF] flex items-center justify-center shadow-xl">
-                  <span className="text-white font-bold text-base lg:text-lg"><img src="/logo.png" alt="Shopify logo" style={{ height: '1em', width: 'auto', display: 'inline-block', verticalAlign: 'bottom' }} /></span>
+                  <span className="text-white font-bold text-base lg:text-lg"><img src="/logo.png" alt="Shopify logo" style={{ height: '2em', width: 'auto', display: 'inline-block', verticalAlign: 'bottom' }} /></span>
                 </div>
               </div>
               <div className="p-4 lg:p-5 flex flex-col items-center justify-center flex-1 basis-[60px]">
-                <span className="text-neutral-800 font-semibold text-sm lg:text-base text-center">Other Brands</span>
+                <span className="text-neutral-800 font-semibold text-sm lg:text-xl text-center">Other Brands</span>
               </div>
             </div>
             <div className="bg-white rounded-2xl border border-neutral-300 min-w-[180px]">
@@ -71,11 +71,11 @@ export default function Comparison() {
                   className={`flex ${index !== comparisonData.length - 1 ? 'border-b border-neutral-300' : ''}`}
                 >
                   {/* Feature Name */}
-                  <div className="p-4 lg:p-5 flex items-center border-r border-neutral-300 flex-1 basis-[60px]">
+                  <div className="p-4 lg:p-4 flex items-center border-r border-neutral-300 flex-1 basis-[60px]">
                     <span className="font-medium text-neutral-900 text-xs lg:text-lg">{row.feature}</span>
                   </div>
                   {/* FFF Column */}
-                  <div className="p-4 lg:p-5 flex items-start gap-2 lg:gap-2 border-r border-neutral-300 bg-[#ff7a00]/10 flex-1 basis-[60px]">
+                  <div className="p-4 lg:p-4 flex items-start gap-2 lg:gap-2 border-r border-neutral-300 bg-[#ff7a00]/10 flex-1 basis-[60px]">
                     <span className="flex-shrink-0 w-4 h-4 lg:w-5 lg:h-5 rounded-full bg-[#22C55E] flex items-center justify-center mt-1">
                       <svg className="w-3 h-3 lg:w-3.5 lg:h-3.5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="20 6 9 17 4 12" />
@@ -84,7 +84,7 @@ export default function Comparison() {
                     <span className="text-neutral-700 text-md lg:text-lg leading-relaxed">{row.fff}</span>
                   </div>
                   {/* Typical Column */}
-                  <div className="p-4 lg:p-5 flex items-start gap-2 lg:gap-2 flex-1 basis-[60px]">
+                  <div className="p-4 lg:p-4 flex items-start gap-2 lg:gap-2 flex-1 basis-[60px]">
                     <span className="flex-shrink-0 w-4 h-4 lg:w-5 lg:h-5 rounded-full bg-[#ef4444] flex items-center justify-center mt-1">
                       <svg className="w-2.5 h-2.5 lg:w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18" />

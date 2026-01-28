@@ -63,43 +63,54 @@ const StarIcon = () => (
   </svg>
 );
 
-const TestimonialCard = ({ testimonial }) => (
-  <div className="flex flex-col bg-white rounded-2xl p-6 shadow-lg border-2 border-[#FF7A00] w-full max-w-sm relative text-black">
+const TestimonialCard = React.forwardRef(({ testimonial, minHeight }, ref) => (
+  <div
+    ref={ref}
+    className="flex flex-col bg-white rounded-2xl p-6 shadow-lg border-2 border-[#FF7A00] w-full max-w-sm relative text-black"
+    style={{ minHeight }}
+  >
     {/* Author info */}
     <div className="flex items-center gap-3 mb-3">
       <img
         src={testimonial.avatar}
         alt={testimonial.name}
         className="w-12 h-12 rounded-full object-cover border-2 border-[#333]"
-        style={{ objectPosition: 'center' }}
       />
       <div>
-        <div className="font-semibold text-base leading-tight">{testimonial.name}</div>
-        <div className="text-xs text-black leading-tight">{testimonial.title}</div>
+        <div className="font-semibold text-base leading-tight">
+          {testimonial.name}
+        </div>
+        <div className="text-xs text-black leading-tight">
+          {testimonial.title}
+        </div>
       </div>
     </div>
-    {/* Star rating */}
+
+    {/* Stars */}
     <div className="flex gap-1 mb-2">
       {Array.from({ length: testimonial.rating }).map((_, i) => (
         <StarIcon key={i} />
       ))}
     </div>
-    {/* Testimonial text */}
+
+    {/* Text */}
     <div className="flex-1">
-      <p className="text-[#333333] leading-relaxed font-medium text-xl pb-2 mb-3">{testimonial.text}</p>
+      <p className="text-[#333] leading-relaxed font-medium text-xl mb-3">
+        {testimonial.text}
+      </p>
     </div>
-    {/* Highlight / Result box */}
+
+    {/* Highlight */}
     {testimonial.highlight && (
-      <div className="mt-auto mb-8">
+      <div className="mt-auto">
         <div className="inline-flex items-center rounded-full bg-[#2563EB]/10 px-4 py-1.5 text-md font-semibold text-[#2563EB]">
           {testimonial.highlight}
         </div>
       </div>
     )}
-    {/* Date */}
-    {/* <div className="absolute left-6 bottom-4 text-xs text-black">{testimonial.date}</div> */}
   </div>
-);
+));
+
 import React, { useEffect, useRef, useState } from "react";
 
 const SPEED = 0.35;
@@ -116,8 +127,20 @@ export default function Testimonials() {
   const items = [...testimonials, ...testimonials];
   const totalCards = testimonials.length;
   const totalWidth = (CARD_WIDTH + GAP) * totalCards;
-
+  const cardRefs = useRef([]);
+  const [cardHeight, setCardHeight] = useState(null);
   // Auto-scroll animation
+
+  useEffect(() => {
+    if (!cardRefs.current.length) return;
+
+    const heights = cardRefs.current.map(
+      (el) => el?.getBoundingClientRect().height || 0
+    );
+
+    setCardHeight(Math.max(...heights));
+  }, []);
+
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -201,8 +224,16 @@ export default function Testimonials() {
             style={{ width: "max-content" }}
           >
             {items.map((testimonial, idx) => (
-              <div key={idx} style={{ width: CARD_WIDTH }} className="flex-shrink-0">
-                <TestimonialCard testimonial={testimonial} />
+              <div
+                key={idx}
+                style={{ width: CARD_WIDTH }}
+                className="flex-shrink-0"
+              >
+                <TestimonialCard
+                  testimonial={testimonial}
+                  minHeight={cardHeight}
+                  ref={(el) => (cardRefs.current[idx] = el)}
+                />
               </div>
             ))}
           </div>
