@@ -1,67 +1,19 @@
 
 "use client";
-// Placeholder brand logos with icons
+// Brand logos from public/logo folder
 const brands = [
-  {
-    name: "startup",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zM4 10h4v4H4v-4zm6 0h4v4h-4v-4z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Logoipsum",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-        <circle cx="12" cy="12" r="10" fillOpacity="0.3" />
-        <circle cx="12" cy="12" r="6" />
-      </svg>
-    ),
-  },
-  {
-    name: "Logoipsum",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-        <circle cx="12" cy="12" r="10" fillOpacity="0.3" />
-        <circle cx="12" cy="12" r="6" />
-      </svg>
-    ),
-  },
-  {
-    name: "Logoipsum",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-        <circle cx="12" cy="12" r="10" fillOpacity="0.3" />
-        <circle cx="12" cy="12" r="6" />
-      </svg>
-    ),
-  },
-  {
-    name: "Logoipsum",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z" />
-      </svg>
-    ),
-  },
-  {
-    name: "company",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.58L18 11l-6 6z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Logoipsum",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-        <circle cx="12" cy="12" r="4" />
-        <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" stroke="currentColor" strokeWidth="2" fill="none" />
-      </svg>
-    ),
-  },
+  { name: "Earlynestt", src: "/logo/earlynestt.png" },
+  { name: "Honey Cloud", src: "/logo/honey_cloud.avif" },
+  { name: "Jewelry Essentials", src: "/logo/Jewelry_Essentials.avif" },
+  { name: "Khet", src: "/logo/Khet.avif" },
+  { name: "Kindmatter", src: "/logo/kindmatter.avif" },
+  { name: "Meraki", src: "/logo/meraki.avif" },
+  { name: "Monarque", src: "/logo/monarque_2.png" },
+  { name: "Nord", src: "/logo/nord.svg" },
+  { name: "Nova", src: "/logo/nova_2.png" },
+  { name: "RIP Tie Hair", src: "/logo/RIP_Tie_hair_logo.svg" },
+  { name: "Trucare", src: "/logo/trucare.avif" },
+  { name: "Vratam Black", src: "/logo/Vratam_Black.avif" },
 ];
 
 export default function BrandsStrip() {
@@ -91,8 +43,14 @@ export default function BrandsStrip() {
                 key={`first-${i}`}
                 className="flex items-center gap-3 text-[#000000]/90 bg-white rounded-2xl px-4 py-2"
               >
-                {brand.icon}
-                <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span>
+                <img
+                  src={brand.src}
+                  alt={brand.name}
+                  className="w-28 h-12 object-contain"
+                  style={{ width: '7rem', height: '3rem' }}
+                  loading="lazy"
+                />
+                {/* <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span> */}
               </div>
             ))}
           </div>
@@ -104,8 +62,14 @@ export default function BrandsStrip() {
                 key={`second-${i}`}
                 className="flex items-center gap-3 text-[#000000]/90 bg-white rounded-2xl px-4 py-2"
               >
-                {brand.icon}
-                <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span>
+                <img
+                  src={brand.src}
+                  alt={brand.name}
+                  className="w-28 h-12 object-contain"
+                  style={{ width: '7rem', height: '3rem' }}
+                  loading="lazy"
+                />
+                {/* <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span> */}
               </div>
             ))}
           </div>
@@ -117,8 +81,14 @@ export default function BrandsStrip() {
                 key={`third-${i}`}
                 className="flex items-center gap-3 text-[#000000]/90 bg-white rounded-2xl px-4 py-2"
               >
-                {brand.icon}
-                <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span>
+                <img
+                  src={brand.src}
+                  alt={brand.name}
+                  className="w-28 h-12 object-contain"
+                  style={{ width: '7rem', height: '3rem' }}
+                  loading="lazy"
+                />
+                {/* <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span> */}
               </div>
             ))}
           </div>

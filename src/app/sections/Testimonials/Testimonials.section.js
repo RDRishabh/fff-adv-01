@@ -193,7 +193,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-12 bg-white overflow-hidden">
+    <section className="py-12 overflow-hidden bg-[#FDF8F4]">
       <div className="mx-auto max-w-7xl px-4 mb-12 text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-black">
           Don't just take our <span className="text-[#2563EB]">word</span> for it.

@@ -1,6 +1,8 @@
+
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { BookCallProvider } from "../components/ui/BookCallContext";
 
 export const metadata = {
   title: "French Fry Features – Shopify Stores That Convert",
@@ -15,16 +17,18 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans antialiased">
-        {/* Sticky Navbar */}
-        <Navbar />
+        <BookCallProvider>
+          {/* Sticky Navbar */}
+          <Navbar />
 
-        {/* Page Content */}
-        <main>
-          {children}
-        </main>
+          {/* Page Content */}
+          <main>
+            {children}
+          </main>
 
-        {/* Footer */}
-        <Footer />
+          {/* Footer */}
+          <Footer />
+        </BookCallProvider>
       </body>
     </html>
   );

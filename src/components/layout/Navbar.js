@@ -1,4 +1,6 @@
+
 "use client";
+import { useBookCall } from "../../components/ui/BookCallContext";
 
 import { useState, useEffect } from "react";
 
@@ -18,11 +20,12 @@ export default function Navbar() {
   }, [isOpen]);
 
   const navLinks = [
-    { href: "#how-it-works", label: "How it works" },
     { href: "#proof", label: "Proof" },
-    { href: "#faq", label: "FAQ" },
+    { href: "#what-we-do", label: "What we do" },
+    { href: "#how-it-works", label: "How it works" },
   ];
 
+  const { openPopup } = useBookCall() || {};
   return (
     <>
       <header className="fixed top-4 left-0 right-0 z-50">
@@ -51,12 +54,13 @@ export default function Navbar() {
                 ))}
               </nav>
 
-              <a
-                href="#book-call"
+              <button
+                type="button"
+                onClick={openPopup}
                 className="rounded-full bg-[#ff7a00] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#e66d00]"
               >
                 Book a Call
-              </a>
+              </button>
             </div>
 
             {/* Mobile Hamburger Button */}
@@ -113,9 +117,12 @@ export default function Navbar() {
               </a>
             ))}
             
-            <a
-              href="#book-call"
-              onClick={() => setIsOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                setIsOpen(false);
+                if (openPopup) openPopup();
+              }}
               className={`mt-4 rounded-full bg-[#ff7a00] px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-[#e66d00] ${
                 isOpen
                   ? "opacity-100 translate-y-0"
@@ -126,7 +133,7 @@ export default function Navbar() {
               }}
             >
               Book a Call
-            </a>
+            </button>
           </nav>
         </div>
       </div>

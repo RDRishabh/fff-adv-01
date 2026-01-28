@@ -1,4 +1,5 @@
 "use client";
+import { useBookCall } from "../../../components/ui/BookCallContext";
 
 const steps = [
   {
@@ -36,6 +37,7 @@ const steps = [
 ];
 
 export default function HowItWorks() {
+  const { openPopup } = useBookCall();
   return (
     <section className="py-24 bg-[#FDF8F4]">
       <div className="mx-auto max-w-6xl px-4">
@@ -173,12 +175,13 @@ export default function HowItWorks() {
           <p className="text-lg text-neutral-600 mb-6">
             We take limited builds per week to keep quality high.
           </p>
-          <a
-            href="#book-call"
+          <button
+            type="button"
+            onClick={openPopup}
             className="inline-flex items-center justify-center rounded-full bg-[#22C55E] px-10 py-4 text-xl font-semibold text-white transition hover:bg-[#e66e00] shadow-lg hover:shadow-xl"
           >
             Book a Call
-          </a>
+          </button>
         </div>
       </div>
     </section>

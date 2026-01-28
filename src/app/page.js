@@ -17,47 +17,50 @@ import FitCheckSection from "./sections/FitCheckSection/FitCheckSection";
 import CaseStudyHighlight from "./sections/CaseStudyHighlight/CaseStudyHighlight";
 import FAQ from "./sections/FAQ/FAQ.section";
 import FinalCTA from "./sections/FinalCTA/FinalCTA.section";
+import { BookCallProvider } from "../components/ui/BookCallContext";
 
 export default function HomePage() {
   return (
-    <main>
-      {/* HERO */}
-      <Hero />
+    <BookCallProvider>
+      <main className="">
+        {/* HERO */}
+        <Hero />
 
-      {/* BRANDS */}
-      <section id="proof">
-        <BrandsStrip />
-      </section>
+        {/* BRANDS */}
+        <section>
+          <BrandsStrip />
+        </section>
 
-      {/* QUICK SELECTOR */}
-      {/* <QuickSelector /> */}
+        {/* QUICK SELECTOR */}
+        {/* <QuickSelector /> */}
 
-      {/* PROBLEMS */}
-      <ProblemSelection />
-      <ImageSlideshowSection/>
+        {/* PROBLEMS */}
+        <ProblemSelection />
+        <ImageSlideshowSection/>
 
-      {/* SOLUTION */}
-      <SolutionSnapshot />
+        {/* SOLUTION */}
+        <SolutionSnapshot />
 
-      {/* COMPARISON */}
-      <Comparison />
+        <FitCheckSection />
 
-      {/* TESTIMONIALS */}
-      <Testimonials />
+        {/* COMPARISON */}
+        <Comparison />
 
-      {/* HOW IT WORKS */}
-      <section id="how-it-works">
-        <HowItWorks />
-      </section>
+        <CaseStudyHighlight />
+        {/* TESTIMONIALS */}
+        <Testimonials />
 
-      <FitCheckSection />
+        {/* HOW IT WORKS */}
+        <section id="how-it-works">
+          <HowItWorks />
+        </section>
 
-      <CaseStudyHighlight />
 
-      {/* OFFER / CALENDLY */}
-      <section id="book-call">
-        <Offer />
-      </section>
-    </main>
+        {/* OFFER / CALENDLY */}
+        <section id="book-call">
+          <Offer />
+        </section>
+      </main>
+    </BookCallProvider>
   );
 }

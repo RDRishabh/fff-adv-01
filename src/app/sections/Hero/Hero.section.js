@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useBookCall } from "../../../components/ui/BookCallContext";
 /* ----------------------------------
    HERO IMAGES (FIXED PATHS)
 -----------------------------------*/
@@ -20,8 +21,8 @@ const headlines = [
   "TRUCARE",
   "VRATAM",
 ];
-
-export default function Hero() {
+export default function HeroSection() {
+  const { openPopup } = useBookCall() || {};
   return (
     <section className="relative bg-[#FDF8F4] overflow-hidden pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 lg:pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -50,8 +51,9 @@ export default function Hero() {
 
             {/* CTA */}
             <div className="mt-8 flex justify-center lg:justify-start lg:justify-start">
-              <a
-                href="#book-call"
+              <button
+                type="button"
+                onClick={openPopup}
                 className="w-full sm:w-auto rounded-full bg-[#2563EB] px-6 sm:px-8 py-3 text-base sm:text-xl font-medium text-white hover:bg-[#e66d00] transition inline-flex items-center justify-center gap-2"
               >
                 Book a free store check
@@ -67,7 +69,7 @@ export default function Hero() {
                 >
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
-              </a>
+              </button>
             </div>
 
             {/* TRUST PILLS */}

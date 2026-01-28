@@ -97,10 +97,18 @@ export default function ImageSlideshowSection() {
   return (
     <section
       className="relative w-full py-16 sm:py-20 md:py-24 overflow-hidden"
+      id="proof"
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
+      {/* Section Title */}
+      <div className="mx-auto max-w-4xl px-4 text-center mb-10">
+        <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl leading-tight">
+          Real <span className="text-blue-600">Results</span> from Our Work
+        </h2>
+      </div>
+
       {/* LEFT ARROW */}
       {showLeft && (
         <button
@@ -126,9 +134,9 @@ export default function ImageSlideshowSection() {
             <div
               key={i}
               style={{
-                width: slideWidth - SLIDE_GAP,
-                minWidth: slideWidth - SLIDE_GAP,
-                height: 520, // Default desktop height
+                width: slideWidth,
+                minWidth: slideWidth,
+                height: 540, // Default desktop height
                 borderRadius: '2.5rem', // Default desktop radius
               }}
               className="bg-transparent overflow-hidden border border-neutral-200 shadow-2xl transition-all duration-300"

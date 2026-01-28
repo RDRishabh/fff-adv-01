@@ -1,5 +1,5 @@
 "use client";
-
+import { useBookCall } from "../../../components/ui/BookCallContext";
 import {
   TrendingUp,
   Zap,
@@ -59,13 +59,14 @@ const solutionCards = [
 ];
 
 export default function SolutionSnapshot() {
+  const { openPopup } = useBookCall();
   return (
-    <section className="py-24 bg-white">
+    <section className="bg-[#FDF8F4] py-24 " id="what-we-do">
       <div className="mx-auto max-w-7xl px-4">
         {/* Header */}
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900">
-            What <span className="text-[#2563EB]">FFF</span> does?
+            What <span className="text-[#FF7A00]">we</span> do?
           </h2>
           <p className="mt-3 max-w-2xl mx-auto text-neutral-600 text-xl">
             We turn your Shopify store into a clean, fast sales machine for paid traffic.
@@ -106,12 +107,13 @@ export default function SolutionSnapshot() {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <a
-            href="#book-call"
+          <button
+            type="button"
+            onClick={openPopup}
             className="inline-flex items-center justify-center rounded-full bg-[#22C55E] px-10 py-4 text-lg font-semibold text-white transition hover:bg-[#e66e00] shadow-lg hover:shadow-xl"
           >
             Book a free store check
-          </a>
+          </button>
         </div>
       </div>
     </section>

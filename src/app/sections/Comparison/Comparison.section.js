@@ -1,3 +1,7 @@
+
+"use client";
+import { useBookCall } from "../../../components/ui/BookCallContext";
+
 const comparisonData = [
   {
     feature: "Goal",
@@ -26,6 +30,19 @@ const comparisonData = [
   },
 ];
 
+function BookCallButton() {
+  const { openPopup } = useBookCall() || {};
+  return (
+    <button
+      type="button"
+      onClick={openPopup}
+      className="mt-5 inline-flex items-center justify-center w-full sm:w-auto rounded-full bg-[#2563EB] px-6 py-2.5 text-xl font-medium text-white transition hover:bg-neutral-800 shadow-lg"
+    >
+      Book a Call
+    </button>
+  );
+}
+
 export default function Comparison() {
   return (
     <section className="py-24 bg-[#FDF8F4]">
@@ -40,12 +57,7 @@ export default function Comparison() {
               Most stores are built to look good. We build them to convert and scale.
             </p>
             {/* CTA Button */}
-            <a
-              href="#book-call"
-              className="mt-5 inline-flex items-center justify-center w-full sm:w-auto rounded-full bg-[#2563EB] px-6 py-2.5 text-xl font-medium text-white transition hover:bg-neutral-800 shadow-lg"
-            >
-              Book a Call
-            </a>
+            <BookCallButton />
           </div>
           {/* RIGHT: Comparison Table */}
           <div className="overflow-x-auto w-full flex-1">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useBookCall } from "../../../components/ui/BookCallContext";
 
 const options = [
   {
@@ -17,6 +18,7 @@ const options = [
 
 export default function QuickSelector() {
   const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0, active: null });
+  const { openPopup } = useBookCall();
 
   const handleMouseEnter = (e, index) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -106,8 +108,9 @@ export default function QuickSelector() {
                     {option.description}
                   </p>
                   
-                  <a
-                    href="#book-call"
+                  <button
+                    type="button"
+                    onClick={openPopup}
                     className={`inline-block rounded-full px-8 py-4 text-sm font-semibold transition-all duration-500 ${
                       hoverPosition.active === index 
                         ? "bg-white text-[#ff7a00] shadow-xl" 
@@ -115,7 +118,7 @@ export default function QuickSelector() {
                     }`}
                   >
                     Book a Call
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
