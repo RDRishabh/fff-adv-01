@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   Paintbrush,
   FileText,
@@ -9,24 +12,29 @@ import {
 
 export default function ProblemSelection() {
   return (
-    <section className="bg-[#FDF8F4] py-32">
+    <section className="bg-[#FDF8F4] py-32 relative min-h-screen">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start min-h-screen">
+        {/* Grid container with items-start - CRITICAL for sticky */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-          {/* LEFT: Content (normal document scroll) */}
-          <div className="flex flex-col">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight">
-              Be honest{" "}
-              <span className="text-black">
-                is your store holding your{" "}
-                <span className="text-[#FF7A00]">ads</span> back?
-              </span>
-            </h2>
+          {/* LEFT: Content */}
+          <div className="flex flex-col space-y-14 lg:pr-12">
 
-            <p className="mt-6 text-xl text-neutral-600 leading-relaxed max-w-xl">
+            {/* Hero text */}
+            <div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight">
+                Be honest{" "}
+                <span className="text-black">
+                  is your store holding your{" "}
+                  <span className="text-[#FF7A00]">ads</span> back?
+                </span>
+              </h2>
+              
+              <p className="mt-6 text-xl text-neutral-600 leading-relaxed max-w-xl">
               Great ads can’t save a weak store. If people don’t trust your site or don’t get your offer,
-              they click, browse, and leave. We fix those leaks so your ad spend actually turns into sales.
-            </p>
+                they click, browse, and leave. We fix those leaks so your ad spend actually turns into sales.
+              </p>
+            </div>
 
             <div className="mt-14 flex flex-col gap-6">
               {[
@@ -97,10 +105,10 @@ export default function ProblemSelection() {
             </div>
           </div>
 
-          {/* RIGHT: Sticky Funnel */}
-          <div className="relative hidden lg:flex justify-end">
-            <div className="sticky top-24">
-              <div className="w-[540px] bg-white rounded-[28px] shadow-2xl overflow-hidden">
+          {/* RIGHT: Funnel - STICKY WITHIN SECTION ONLY */}
+          <div className="hidden lg:block self-start sticky top-32 lg:pl-8">
+            <div className="w-[540px]">
+              <div className="bg-white rounded-[28px] shadow-2xl overflow-hidden relative">
 
                 {/* Browser dots */}
                 <div className="absolute top-5 right-6 flex gap-2">
@@ -109,12 +117,14 @@ export default function ProblemSelection() {
                   <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
                 </div>
 
+                {/* Header */}
                 <div className="pt-10 pb-6 px-8">
                   <h3 className="text-sm font-semibold text-neutral-900">
                     Funnel Efficiency Map
                   </h3>
                 </div>
 
+                {/* Funnel stages */}
                 <div className="flex flex-col items-center px-10 pb-10 gap-4">
                   <div className="w-[340px] bg-[#2563EB] text-white rounded-xl px-5 py-3 text-sm font-semibold flex justify-between shadow">
                     <span>Paid Traffic (Facebook/Google)</span>
@@ -144,6 +154,7 @@ export default function ProblemSelection() {
                   </div>
                 </div>
 
+                {/* Footer stats */}
                 <div className="flex items-start gap-3 px-6 py-4 border-t bg-[#FAFAFA]">
                   <div className="w-8 h-8 rounded-full bg-[#FEE2E2] flex items-center justify-center">
                     <span className="text-[#DC2626] font-bold">✕</span>
