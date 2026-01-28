@@ -24,21 +24,21 @@ export default function CaseStudyHighlight() {
                 </h3>
 
                 <div className="mt-6">
-                  <div className="text-xs uppercase tracking-wide text-[#FF7A00] font-semibold">
+                  <div className="text-lg uppercase tracking-wide text-[#FF7A00] font-semibold">
                     The Problem
                   </div>
-                  <p className="mt-2 text-neutral-300 leading-relaxed">
+                  <p className="mt-2 text-lg text-neutral-300 leading-relaxed">
                     Store was beautiful but bloated. Load times hit 5s+, and the
                     “Add to Cart” button was hidden below the fold on mobile.
                   </p>
                 </div>
 
                 <div className="mt-6">
-                  <div className="text-xs uppercase tracking-wide text-[#22C55E] font-semibold">
+                  <div className="text-lg uppercase tracking-wide text-[#22C55E] font-semibold">
                     The Fix
                   </div>
 
-                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-neutral-200">
+                  <div className="mt-3 grid grid-cols-1 text-lg sm:grid-cols-2 gap-2 text-neutral-200">
                     <span>• Custom Shopify theme build</span>
                     <span>• Sub-2s mobile load time</span>
                     <span>• Segmented cart upsells</span>
@@ -49,13 +49,13 @@ export default function CaseStudyHighlight() {
                 <div className="mt-8 flex gap-8">
                   <div>
                     <div className="text-2xl font-bold">3.2%</div>
-                    <div className="text-xs text-neutral-400">
+                    <div className="text-lg text-neutral-400">
                       CVR (was 1.1%)
                     </div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold">$92.00</div>
-                    <div className="text-xs text-neutral-400">
+                    <div className="text-lg text-neutral-400">
                       AOV (was $64.00)
                     </div>
                   </div>
@@ -63,7 +63,7 @@ export default function CaseStudyHighlight() {
 
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 mt-8 text-sm font-semibold text-[#FF7A00] hover:underline"
+                  className="inline-flex items-center gap-2 mt-8 text-lg font-semibold text-[#FF7A00] hover:underline"
                 >
                   Read the full teardown →
                 </a>

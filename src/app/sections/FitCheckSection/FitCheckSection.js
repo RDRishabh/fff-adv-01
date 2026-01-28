@@ -38,10 +38,10 @@ export default function FitCheckSection() {
                       "You’re ready to invest once in a store that can support growth for the next 12–24 months.",
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start gap-4">
-                        <span className="mt-1 w-6 h-6 rounded-full bg-[#D1FAE5] flex items-center justify-center text-[#16A34A] text-sm font-bold shadow">
+                        <span className="mt-1 w-12  rounded-full bg-[#D1FAE5] flex items-center justify-center text-[#16A34A] text-sm font-bold shadow">
                           ✓
                         </span>
-                        <span className="text-neutral-800 leading-snug">
+                        <span className="text-neutral-800m text-lg leading-snug">
                           {item}
                         </span>
                       </li>
@@ -58,14 +58,14 @@ export default function FitCheckSection() {
                   <ul className="mt-6 space-y-5">
                     {[
                       "You’re just testing a product with no clear budget for traffic.",
-                      "You need a super‑custom app or marketplace build.",
+                      "You need a super‑custom app or a marketplace build.",
                       "You’re not focused on marketing and growth right now.",
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start gap-4">
-                        <span className="mt-1 w-6 h-6 rounded-full bg-[#FEE2E2] flex items-center justify-center text-[#DC2626] text-sm font-bold shadow">
+                        <span className="mt-1 w-12 rounded-full bg-[#FEE2E2] flex items-center justify-center text-[#DC2626] text-sm font-bold shadow">
                           ✕
                         </span>
-                        <span className="text-neutral-800 leading-snug">
+                        <span className="text-neutral-800 text-lg leading-snug">
                           {item}
                         </span>
                       </li>
