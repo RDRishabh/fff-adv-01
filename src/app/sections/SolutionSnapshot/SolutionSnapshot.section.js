@@ -63,29 +63,30 @@ export default function SolutionSnapshot() {
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight">
-            What <span className="text-[#FF7A00]">FFF</span> does?
+            What <span className="text-[#2563EB]">FFF</span> does?
           </h2>
           <p className="mt-2 max-w-2xl mx-auto text-neutral-600 text-md md:text-lg leading-relaxed">
             Key solutions we provide to help your store convert and scale.
           </p>
         </div>
 
-        {/* Solution Cards Row, Orange Cards, No Outer Box */}
+        {/* Solution Cards Row, Website Vibe Palette */}
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full justify-center">
           {solutionCards.map((card, idx) => (
             <div
               key={idx}
-              className="bg-[#FF7A00] rounded-2xl p-7 md:p-8 flex flex-col shadow-xl border border-[#F3F4F6] min-h-[220px] w-full md:w-[260px] lg:w-[280px]"
+              className="bg-white rounded-2xl p-7 md:p-8 flex flex-col shadow-xl border border-[#F3F4F6] min-h-[220px] w-full md:w-[260px] lg:w-[280px]"
+              style={{ background: '#faebdc'}}
             >
               {/* Icon and Badge Row */}
               <div className="flex items-center justify-between gap-2">
                 {card.icon}
-                <span className={`text-xs font-normal rounded-full px-3 py-1 bg-white text-black border-0`}>{card.tag}</span>
+                <span className={`text-xs font-semibold rounded-full px-3 py-1 ${card.tagColor}`}>{card.tag}</span>
               </div>
               {/* Title and Description */}
               <div className="mt-4">
-                <div className="text-xl font-medium text-black">{card.title}</div>
-                <div className="mt-2 text-white text-base leading-relaxed">{card.desc}</div>
+                <div className="text-xl font-semibold text-neutral-900">{card.title}</div>
+                <div className="mt-2 text-neutral-600 text-base leading-relaxed">{card.desc}</div>
               </div>
             </div>
           ))}

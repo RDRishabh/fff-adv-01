@@ -39,7 +39,7 @@ export default function Comparison() {
           {/* LEFT: Title + CTA */}
           <div className="flex flex-col items-start justify-center text-left lg:pr-2 lg:w-[480px] flex-shrink-0">
             <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 leading-tight">
-              Why Choose Us?
+              Why <span className="text-[#FF7A00]">Choose </span>Us?  
             </h2>
             <p className="mt-4 text-neutral-600 leading-relaxed text-xs md:text-sm">
               Most stores are built to look good. We build them to convert and scale.
@@ -47,7 +47,7 @@ export default function Comparison() {
             {/* CTA Button */}
             <a
               href="#book-call"
-              className="mt-5 inline-flex items-center justify-center w-full sm:w-auto rounded-full bg-[#22C55E] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-800 shadow-lg"
+              className="mt-5 inline-flex items-center justify-center w-full sm:w-auto rounded-full bg-[#FF7A00] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-800 shadow-lg"
             >
               Book a Call
             </a>

@@ -13,6 +13,8 @@ import Examples from "./sections/Examples/Examples.section";
 import HowItWorks from "./sections/HowItWorks/HowItWorks.section";
 import Offer from "./sections/Offer/Offer.section";
 import ImageSlideshowSection from "./sections/ImageSlideShowSection/ImageSlideShowSection";
+import FitCheckSection from "./sections/FitCheckSection/FitCheckSection";
+import CaseStudyHighlight from "./sections/CaseStudyHighlight/CaseStudyHighlight";
 import FAQ from "./sections/FAQ/FAQ.section";
 import FinalCTA from "./sections/FinalCTA/FinalCTA.section";
 
@@ -47,6 +49,10 @@ export default function HomePage() {
       <section id="how-it-works">
         <HowItWorks />
       </section>
+
+      <FitCheckSection />
+
+      <CaseStudyHighlight />
 
       {/* OFFER / CALENDLY */}
       <section id="book-call">
