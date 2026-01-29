@@ -37,7 +37,7 @@ export default function Footer() {
             </div>
 
             {/* Social */}
-            <div>
+            {/* <div>
               <p className="mb-4 text-sm font-semibold text-neutral-900">
                 Connect
               </p>
@@ -46,7 +46,7 @@ export default function Footer() {
                 <li><a href="#" className="hover:text-[#ff7a00] transition">LinkedIn</a></li>
                 <li><a href="#" className="hover:text-[#ff7a00] transition">Twitter</a></li>
               </ul>
-            </div>
+            </div> */}
 
           </div>
 

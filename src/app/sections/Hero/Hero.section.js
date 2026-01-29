@@ -45,7 +45,7 @@ export default function HeroSection() {
             </p>
 
             <p className="mt-4 sm:mt-6 text-sm xs:text-base sm:text-[22px] text-neutral-700">
-              We set up (or rebuild) your store so you can scale paid ads to 150 - 300% ROAS <br/> without worrying about leaks in the funnel. 
+              We set up (or rebuild) your store so you can scale paid ads to 3-4X ROAS <br/> without worrying about leaks in the funnel. 
             </p>
 
             {/* CTA */}

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const steps = [
   {
@@ -32,6 +32,17 @@ export default function BookCallPopup({ open, onClose }) {
   const [form, setForm] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (submitted) {
+      const timeout = setTimeout(() => {
+        if (typeof window !== 'undefined') {
+          window.location.hash = 'book-call';
+        }
+      }, 2200);
+      return () => clearTimeout(timeout);
+    }
+  }, [submitted]);
 
   // TODO: Replace with your actual Google Apps Script Web App URL
   const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyYgxD8hYCWhsWyQEme1KrTJvKnjT8ONNEV7xh54haTUYt-CbzsS7tukPxxRDDafujv/exec";

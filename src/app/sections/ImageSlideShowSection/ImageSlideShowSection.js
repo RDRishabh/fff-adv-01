@@ -12,16 +12,12 @@ const slides = [
 
 const SLIDE_GAP = 16;
 
-function getConfig() {
-  if (typeof window === "undefined") {
-    return { width: 276, height: 540, speed: 0.7 };
-  }
-
-  if (window.innerWidth < 640) {
+function getConfig(width = 1200) {
+  if (width < 640) {
     return { width: 200 + SLIDE_GAP, height: 420, speed: 0.4 };
   }
 
-  if (window.innerWidth < 1024) {
+  if (width < 1024) {
     return { width: 220 + SLIDE_GAP, height: 480, speed: 0.55 };
   }
 
@@ -32,25 +28,34 @@ export default function ImageSlideshowSection() {
   const containerRef = useRef(null);
   const rafRef = useRef(null);
 
-  const [config, setConfig] = useState(getConfig());
-  const [offset, setOffset] = useState(slides.length * getConfig().width);
+  // ✅ SSR-safe defaults
+  const [config, setConfig] = useState(() => getConfig());
+  const [offset, setOffset] = useState(() => slides.length * getConfig().width);
+  const [isMobile, setIsMobile] = useState(false);
+
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
 
   const totalWidth = slides.length * config.width;
   const infiniteSlides = [...slides, ...slides, ...slides];
 
-  /* ---------- RESIZE ---------- */
+  /* ---------- RESIZE + MOBILE DETECTION ---------- */
   useEffect(() => {
-    const onResize = () => setConfig(getConfig());
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    const update = () => {
+      const width = window.innerWidth;
+      setConfig(getConfig(width));
+      setIsMobile(width < 768);
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
 
   /* ---------- AUTO SCROLL ---------- */
   useEffect(() => {
     const animate = () => {
-      setOffset((prev) => prev + config.speed);
+      setOffset((p) => p + config.speed);
       rafRef.current = requestAnimationFrame(animate);
     };
 
@@ -68,9 +73,9 @@ export default function ImageSlideshowSection() {
   const handlePrev = () => setOffset((p) => p - config.width);
   const handleNext = () => setOffset((p) => p + config.width);
 
-  /* ---------- DESKTOP HOVER ARROWS ---------- */
+  /* ---------- DESKTOP HOVER ---------- */
   const handleMouseMove = (e) => {
-    if (window.innerWidth < 768 || !containerRef.current) return;
+    if (isMobile || !containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -101,9 +106,8 @@ export default function ImageSlideshowSection() {
       <button
         onClick={handlePrev}
         className={`absolute left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-20
-          rounded-full bg-black/40 p-3 text-white backdrop-blur-md
-          transition-opacity
-          ${showLeft || window.innerWidth < 768 ? "opacity-100" : "opacity-0"}`}
+        rounded-full bg-black/40 p-3 text-white backdrop-blur-md transition-opacity
+        ${showLeft || isMobile ? "opacity-100" : "opacity-0"}`}
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
           <polyline points="15 18 9 12 15 6" />
@@ -143,9 +147,8 @@ export default function ImageSlideshowSection() {
       <button
         onClick={handleNext}
         className={`absolute right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-20
-          rounded-full bg-black/40 p-3 text-white backdrop-blur-md
-          transition-opacity
-          ${showRight || window.innerWidth < 768 ? "opacity-100" : "opacity-0"}`}
+        rounded-full bg-black/40 p-3 text-white backdrop-blur-md transition-opacity
+        ${showRight || isMobile ? "opacity-100" : "opacity-0"}`}
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
           <polyline points="9 18 15 12 9 6" />
