@@ -1,7 +1,7 @@
 /* ===============================
    Home Page – One Pager
    =============================== */
-
+import { getVariant } from "@/lib/getVariant";
 import Hero from "./sections/Hero/Hero.section";
 import BrandsStrip from "./sections/BrandsStrip/BrandsStrip.section";
 import QuickSelector from "./sections/QuickSelector/QuickSelector.section";
@@ -15,16 +15,13 @@ import Offer from "./sections/Offer/Offer.section";
 import ImageSlideshowSection from "./sections/ImageSlideShowSection/ImageSlideShowSection";
 import FitCheckSection from "./sections/FitCheckSection/FitCheckSection";
 import CaseStudyHighlight from "./sections/CaseStudyHighlight/CaseStudyHighlight";
-import FAQ from "./sections/FAQ/FAQ.section";
-import FinalCTA from "./sections/FinalCTA/FinalCTA.section";
-import { BookCallProvider } from "../components/ui/BookCallContext";
 
 export default function HomePage() {
+  const variant = getVariant();
   return (
-    <BookCallProvider>
       <main className="">
         {/* HERO */}
-        <Hero />
+        <Hero variant={variant} />
 
         {/* BRANDS */}
         <section>
@@ -61,6 +58,5 @@ export default function HomePage() {
           <Offer />
         </section>
       </main>
-    </BookCallProvider>
   );
 }

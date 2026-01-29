@@ -5,17 +5,31 @@ const steps = [
   {
     label: "Quick Intro",
     fields: [
-      { name: "firstName", label: "First name", required: true, type: "text" },
+      { name: "firstName", label: "Name", required: true, type: "text" },
       { name: "email", label: "Work email", required: true, type: "email" },
       { name: "storeUrl", label: "Store URL (optional)", required: false, type: "text" },
-      { name: "role", label: "Role", required: true, type: "select", options: ["Founder", "Marketing", "Growth", "Ecommerce", "Other"] },
+      { name: "role", label: "Industry", required: true, type: "select", options: [
+        "E-Commerce",
+        "Dropshipping",
+        "EdTech",
+        "Health & Wellness",
+        "Fashion & Apparel",
+        "Beauty & Personal Care",
+        "Home & Living",
+        "Food & Beverage",
+        "Electronics",
+        "Automotive",
+        "B2B",
+        "Services",
+        "Other"
+      ] },
     ],
   },
   {
     label: "What you need",
     fields: [
       { name: "onShopify", label: "Are you currently on Shopify?", required: true, type: "radio", options: ["Yes", "No", "I want to move to Shopify"] },
-      { name: "helpWith", label: "What do you want help with?", required: true, type: "radio", options: ["Rebuilding an existing store", "CRO optimization for paid ads", "Launching a new store"] },
+      // helpWith will be conditionally rendered in the form, not here
     ],
   },
   {
@@ -70,7 +84,12 @@ export default function BookCallPopup({ open, onClose }) {
   };
 
   const handleNext = () => {
-    setStep((s) => Math.min(s + 1, steps.length - 1));
+    // If on 'What you need' step and user selected 'I want to move to Shopify', skip helpWith and go to Final Bits
+    if (step === 1 && form.onShopify === 'I want to move to Shopify') {
+      setStep(2);
+    } else {
+      setStep((s) => Math.min(s + 1, steps.length - 1));
+    }
   };
   const handleBack = () => {
     setStep((s) => Math.max(s - 1, 0));
@@ -123,61 +142,91 @@ export default function BookCallPopup({ open, onClose }) {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
-            {steps[step].fields.map((field) => (
-              <div key={field.name}>
+            {/* Render fields for current step */}
+            {steps[step].fields.map((field) => {
+              // Only render helpWith if onShopify is answered and not 'I want to move to Shopify'
+              if (field.name === 'helpWith') return null;
+              return (
+                <div key={field.name}>
+                  <label className="block font-medium mb-1 text-neutral-800">
+                    {field.label}{field.required && <span className="text-red-500">*</span>}
+                  </label>
+                  {field.type === "text" || field.type === "email" ? (
+                    <input
+                      type={field.type}
+                      name={field.name}
+                      value={form[field.name] || ""}
+                      onChange={handleChange}
+                      required={field.required}
+                      className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-lg focus:ring-2 focus:ring-[#2563EB] focus:outline-none"
+                    />
+                  ) : field.type === "select" ? (
+                    <select
+                      name={field.name}
+                      value={form[field.name] || ""}
+                      onChange={handleChange}
+                      required={field.required}
+                      className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-lg focus:ring-2 focus:ring-[#2563EB] focus:outline-none"
+                    >
+                      <option value="">Select...</option>
+                      {field.options.map((opt) => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                  ) : field.type === "radio" ? (
+                    <div className="flex flex-col gap-2">
+                      {field.options.map((opt) => (
+                        <label key={opt} className="flex items-center gap-3 cursor-pointer">
+                          <input
+                            type="radio"
+                            name={field.name}
+                            value={opt}
+                            checked={form[field.name] === opt}
+                            onChange={() => handleRadio(field.name, opt)}
+                            required={field.required}
+                            className="accent-[#2563EB] w-5 h-5"
+                          />
+                          <span className="text-lg">{opt}</span>
+                        </label>
+                      ))}
+                    </div>
+                  ) : field.type === "textarea" ? (
+                    <textarea
+                      name={field.name}
+                      value={form[field.name] || ""}
+                      onChange={handleChange}
+                      rows={3}
+                      className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-lg focus:ring-2 focus:ring-[#2563EB] focus:outline-none"
+                    />
+                  ) : null}
+                </div>
+              );
+            })}
+
+            {/* Conditionally render helpWith if onShopify is answered and not 'I want to move to Shopify' */}
+            {step === 1 && form.onShopify && form.onShopify !== 'I want to move to Shopify' && (
+              <div>
                 <label className="block font-medium mb-1 text-neutral-800">
-                  {field.label}{field.required && <span className="text-red-500">*</span>}
+                  What do you want help with?<span className="text-red-500">*</span>
                 </label>
-                {field.type === "text" || field.type === "email" ? (
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    value={form[field.name] || ""}
-                    onChange={handleChange}
-                    required={field.required}
-                    className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-lg focus:ring-2 focus:ring-[#2563EB] focus:outline-none"
-                  />
-                ) : field.type === "select" ? (
-                  <select
-                    name={field.name}
-                    value={form[field.name] || ""}
-                    onChange={handleChange}
-                    required={field.required}
-                    className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-lg focus:ring-2 focus:ring-[#2563EB] focus:outline-none"
-                  >
-                    <option value="">Select...</option>
-                    {field.options.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
-                    ))}
-                  </select>
-                ) : field.type === "radio" ? (
-                  <div className="flex flex-col gap-2">
-                    {field.options.map((opt) => (
-                      <label key={opt} className="flex items-center gap-3 cursor-pointer">
-                        <input
-                          type="radio"
-                          name={field.name}
-                          value={opt}
-                          checked={form[field.name] === opt}
-                          onChange={() => handleRadio(field.name, opt)}
-                          required={field.required}
-                          className="accent-[#2563EB] w-5 h-5"
-                        />
-                        <span className="text-lg">{opt}</span>
-                      </label>
-                    ))}
-                  </div>
-                ) : field.type === "textarea" ? (
-                  <textarea
-                    name={field.name}
-                    value={form[field.name] || ""}
-                    onChange={handleChange}
-                    rows={3}
-                    className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-lg focus:ring-2 focus:ring-[#2563EB] focus:outline-none"
-                  />
-                ) : null}
+                <div className="flex flex-col gap-2">
+                  {['Rebuilding an existing store', 'CRO optimization for paid ads', 'Launching a new store'].map((opt) => (
+                    <label key={opt} className="flex items-center gap-3 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="helpWith"
+                        value={opt}
+                        checked={form.helpWith === opt}
+                        onChange={() => handleRadio('helpWith', opt)}
+                        required
+                        className="accent-[#2563EB] w-5 h-5"
+                      />
+                      <span className="text-lg">{opt}</span>
+                    </label>
+                  ))}
+                </div>
               </div>
-            ))}
+            )}
             <div className="flex items-center justify-between mt-8">
               <button
                 type="button"

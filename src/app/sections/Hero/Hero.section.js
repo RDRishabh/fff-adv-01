@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useBookCall } from "../../../components/ui/BookCallContext";
+import { HERO_VARIANTS } from "../../../constants/variants";
 /* ----------------------------------
    HERO IMAGES (FIXED PATHS)
 -----------------------------------*/
@@ -21,8 +22,9 @@ const headlines = [
   "TRUCARE",
   "VRATAM",
 ];
-export default function HeroSection() {
+export default function HeroSection({ variant = "control" }) {
   const { openPopup } = useBookCall() || {};
+  const heroCopy = HERO_VARIANTS[variant] || HERO_VARIANTS.control;
   return (
     <section className="relative bg-[#FDF8F4] overflow-hidden pt-20 sm:pt-28 lg:pt-40 pb-10 sm:pb-20 lg:pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -30,18 +32,7 @@ export default function HeroSection() {
           {/* LEFT COPY */}
           <div className="w-full pt-6 md:pt-0 lg:text-left">
             <p className="text-4xl lg:text-6xl font-base leading-tight tracking-tight text-black">
-              <span className="">Launch</span> <span>a  </span>
-              {/* <span className="font-medium">Professionally</span> built{" "} <br/> */}
-              <span className="inline-flex align-middle mx-1">  
-                <img
-                  src="/images/shopify.png"
-                  alt="Shopify logo"
-                  className="h-[1em] w-auto"
-                />
-              </span>
-              <span className="font-medium">Shopify store </span> <br/>  that’s <span className="font-medium">built to sell, </span> 
-              {/* <br className="hidden sm:block" /> */}
-               <br/>not just  <span className="font-medium">look pretty.</span>
+              {heroCopy.title}
             </p>
 
             <p className="mt-4 sm:mt-6 text-sm xs:text-base sm:text-[22px] text-neutral-700">
