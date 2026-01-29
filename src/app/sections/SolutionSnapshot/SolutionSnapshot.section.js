@@ -64,7 +64,7 @@ export default function SolutionSnapshot() {
     <section className="bg-[#FDF8F4] py-12 " id="what-we-do">
       <div className="mx-auto max-w-7xl px-4">
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-left sm:text-center mb-8">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900">
             What <span className="text-[#FF7A00]">we</span> do?
           </h2>
@@ -106,13 +106,25 @@ export default function SolutionSnapshot() {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 text-center">
+        <div className="mt-6 sm:mt-8 flex justify-start sm:justify-center">
           <button
             type="button"
             onClick={openPopup}
-            className="inline-flex items-center justify-center rounded-full bg-[#22C55E] px-10 py-4 text-lg font-semibold text-white transition hover:bg-[#e66e00] shadow-lg hover:shadow-xl"
+            className="sm:w-auto rounded-full bg-[#22C55E] px-6 sm:px-8 py-3 text-base sm:text-2xl font-medium text-white hover:bg-[#e66d00] transition inline-flex items-center  gap-2"
           >
             Book a free store check
+            <svg
+              width="22"
+              height="22"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
           </button>
         </div>
       </div>

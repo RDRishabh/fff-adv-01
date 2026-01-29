@@ -8,6 +8,8 @@ const slides = [
   "/images/section/slide05.png",
   "/images/section/slide06.png",
   "/images/section/slide07.png",
+  "/images/section/slide08.png",
+  "/images/section/slide09.png",
 ];
 
 const SLIDE_GAP = 16;
@@ -88,7 +90,7 @@ export default function ImageSlideshowSection() {
     <section
       ref={containerRef}
       id="proof"
-      className="relative w-full overflow-hidden py-16 sm:py-20 md:py-24"
+      className="relative w-full overflow-hidden py-12 md:pb-20"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => {
         setShowLeft(false);

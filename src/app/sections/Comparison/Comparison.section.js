@@ -1,5 +1,6 @@
 "use client";
 import { useBookCall } from "../../../components/ui/BookCallContext";
+import { Check, X } from "lucide-react";
 
 const comparisonData = [
   {
@@ -32,13 +33,27 @@ const comparisonData = [
 function BookCallButton() {
   const { openPopup } = useBookCall() || {};
   return (
-    <button
-      type="button"
-      onClick={openPopup}
-      className="mt-6 inline-flex items-center justify-center w-full rounded-full bg-[#2563EB] px-6 py-3 text-lg font-medium text-white transition hover:bg-neutral-800 shadow-lg"
-    >
-      Book a Call
-    </button>
+    <div className="mt-6 sm:mt-8 flex justify-start">
+      <button
+        type="button"
+        onClick={openPopup}
+        className="sm:w-auto rounded-full bg-[#FF7A00] px-6 sm:px-8 py-3 text-base sm:text-2xl font-medium text-white hover:bg-[#e66d00] transition inline-flex items-center sm:text-left  gap-2"
+      >
+        Book a free store check
+        <svg
+          width="22"
+          height="22"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          viewBox="0 0 24 24"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </button>
+    </div>
   );
 }
 
@@ -97,16 +112,16 @@ export default function Comparison() {
                     </span>
                   </div>
 
-                  <div className="p-4 flex gap-2 border-r border-neutral-300 bg-[#ff7a00]/10 flex-1 basis-[60px]">
-                    <span className="w-4 h-4 rounded-full bg-green-500 mt-1 flex items-center justify-center text-white text-xs">
-                      ✓
+                  <div className="p-4 flex items-center gap-2 border-r border-neutral-300 bg-[#ff7a00]/10 flex-1 basis-[60px]">
+                    <span className="inline-flex shrink-0 w-4 h-4 rounded-full bg-green-500 items-center justify-center text-white">
+                      <Check size={10} strokeWidth={3} />
                     </span>
                     <span>{row.fff}</span>
-                  </div>
+                    </div>
 
-                  <div className="p-4 flex gap-2 flex-1 basis-[60px] text-neutral-500">
-                    <span className="w-4 h-4 rounded-full bg-red-500 mt-1 flex items-center justify-center text-white text-xs">
-                      ✕
+                    <div className="p-4 flex items-center gap-2 flex-1 basis-[60px] text-neutral-500">
+                    <span className="inline-flex shrink-0 w-4 h-4 rounded-full bg-red-500 items-center justify-center text-white">
+                      <X size={10} strokeWidth={3} />
                     </span>
                     <span>{row.typical}</span>
                   </div>

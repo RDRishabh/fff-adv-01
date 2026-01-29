@@ -171,16 +171,25 @@ export default function HowItWorks() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-8">
-          <p className="text-lg text-neutral-600 mb-6">
-            We take limited builds per week to keep quality high.
-          </p>
+        <div className="mt-6 sm:mt-12 flex justify-center">
           <button
             type="button"
             onClick={openPopup}
-            className="inline-flex items-center justify-center rounded-full bg-[#22C55E] px-10 py-4 text-xl font-semibold text-white transition hover:bg-[#e66e00] shadow-lg hover:shadow-xl"
+            className="sm:w-auto rounded-full bg-[#2563EB ] px-6 sm:px-8 py-3 text-base sm:text-2xl font-medium text-white hover:bg-[#e66d00] transition inline-flex items-center  gap-2"
           >
-            Book a Call
+            Book a free store check
+            <svg
+              width="22"
+              height="22"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
           </button>
         </div>
       </div>

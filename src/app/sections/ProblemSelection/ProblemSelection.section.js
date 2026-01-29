@@ -14,31 +14,33 @@ import { motion } from "framer-motion";
 function BookCallButton() {
   const { openPopup } = useBookCall() || {};
   return (
-    <button
-      type="button"
-      onClick={openPopup}
-      className="inline-flex items-center gap-2 rounded-full bg-[#22C55E] px-8 py-3 text-xl font-medium text-white hover:bg-[#e66d00] transition"
-    >
-      See what's blocking your sales
-      <svg
-        width="22"
-        height="22"
-        fill="none"
-        stroke="white"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        viewBox="0 0 24 24"
+    <div className=" flex justify-start">
+      <button
+        type="button"
+        onClick={openPopup}
+        className="sm:w-auto rounded-full bg-[#22C55E] px-6 sm:px-8 py-3 text-base sm:text-2xl font-medium text-white hover:bg-[#e66d00] transition inline-flex items-center  gap-2"
       >
-        <path d="M5 12h14M13 6l6 6-6 6" />
-      </svg>
-    </button>
+        Book a free store check
+        <svg
+          width="22"
+          height="22"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          viewBox="0 0 24 24"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </button>
+    </div>
   );
 }
 
 export default function ProblemSelection() {
   return (
-    <section className="bg-[#FDF8F4] py-12 relative min-h-screen">
+    <section className="bg-[#FDF8F4] py-12 lg:pb-24 relative min-h-screen">
       <div className="mx-auto max-w-7xl px-4">
         {/* Grid container with items-start - CRITICAL for sticky */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -47,9 +49,9 @@ export default function ProblemSelection() {
             {/* Hero text */}
             <div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight">
-                Be honest{" "}
+                <span>Be honest: {" "}</span>
                 <span className="text-black">
-                  is your store holding your{" "}
+                  <span> {" "} Is your store holding your{" "}</span>
                   <span className="text-[#FF7A00]">ads</span> back?
                 </span>
               </h2>
@@ -96,7 +98,7 @@ export default function ProblemSelection() {
                     <item.icon className="w-5 h-5 text-[#FF7A00]" strokeWidth={2.2} />
                   </div>
                   <div>
-                    <div className="text-2xl font-semibold text-[#ef4444]">
+                    <div className="text-2xl font-semibold text-[#FF7A00]">
                       {item.title}
                     </div>
                     <div className="text-lg text-neutral-500">

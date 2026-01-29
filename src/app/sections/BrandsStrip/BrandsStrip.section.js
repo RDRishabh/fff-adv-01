@@ -1,19 +1,22 @@
 
 "use client";
 // Brand logos from public/logo folder
+"use client";
+
+// Brand logos from public/logo folder
 const brands = [
-  { name: "Earlynestt", src: "/logo/earlynestt.png" },
-  { name: "Honey Cloud", src: "/logo/honey_cloud.avif" },
-  { name: "Jewelry Essentials", src: "/logo/Jewelry_Essentials.avif" },
-  { name: "Khet", src: "/logo/Khet.avif" },
-  { name: "Kindmatter", src: "/logo/kindmatter.avif" },
-  { name: "Meraki", src: "/logo/meraki.avif" },
-  { name: "Monarque", src: "/logo/monarque_2.png" },
-  { name: "Nord", src: "/logo/nord.svg" },
-  { name: "Nova", src: "/logo/nova_2.png" },
-  { name: "RIP Tie Hair", src: "/logo/RIP_Tie_hair_logo.svg" },
-  { name: "Trucare", src: "/logo/trucare.avif" },
-  { name: "Vratam Black", src: "/logo/Vratam_Black.avif" },
+  { name: "Earlynestt", src: "/logo/earlynestt.png", link: "https://earlynestt.com/" },
+  { name: "Honey Cloud", src: "/logo/honey_cloud.avif", link: "https://www.honeycloudz.com/" },
+  { name: "Jewelry Essentials", src: "/logo/Jewelry_Essentials.avif", link: "https://www.jewelryxessentials.com/" },
+  { name: "Khet", src: "/logo/Khet.avif", link: "https://khet.in/" },
+  { name: "Kindmatter", src: "/logo/kindmatter.avif", link: "http://kindmatter.in/" },
+  { name: "Meraki", src: "/logo/meraki.avif", link: "https://www.merakimedicinal.com/" },
+  { name: "Monarque", src: "/logo/monarque_2.png", link: "https://monarque.co.in/" },
+  { name: "Nord", src: "/logo/nord.svg", link: "https://nordfragrances.com/" },
+  { name: "Nova", src: "/logo/nova_2.png", link: "http://novawatches.in/" },
+  { name: "RIP Tie Hair", src: "/logo/RIP_Tie_hair_logo.svg", link: "https://www.riptiehair.com/" },
+  { name: "Trucare", src: "/logo/trucare.avif", link: "https://trucare.in/" },
+  { name: "Vratam Black", src: "/logo/Vratam_Black.avif", link: "https://vratam.in/" },
 ];
 
 // Add custom CSS for responsive marquee speed
@@ -49,7 +52,7 @@ export default function BrandsStrip() {
     <>
       <div dangerouslySetInnerHTML={{ __html: marqueeStyle }} />
 
-      <section className="py-12 bg-[#ff7a00] overflow-hidden">
+      <section className="pt-10 pb-12 bg-[#ff7a00] overflow-hidden">
         <h2 className="text-center text-3xl sm:text-4xl font-bold text-[#FDF8F4]">
           Brands we’ve worked with
         </h2>
@@ -62,9 +65,12 @@ export default function BrandsStrip() {
           {/* Marquee */}
           <div className="animate-marquee">
             {[...brands, ...brands].map((brand, i) => (
-              <div
+              <a
                 key={i}
-                className="mx-6 flex items-center bg-white rounded-2xl px-6 py-3"
+                href={brand.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-6 flex items-center bg-white rounded-2xl px-6 py-3 hover:scale-105 transition-transform duration-300"
               >
                 <img
                   src={brand.src}
@@ -72,7 +78,7 @@ export default function BrandsStrip() {
                   className="w-28 h-12 object-contain"
                   loading="lazy"
                 />
-              </div>
+              </a>
             ))}
           </div>
         </div>
