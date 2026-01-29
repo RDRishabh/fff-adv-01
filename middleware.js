@@ -14,24 +14,38 @@ const ALLOWED_SUBDOMAINS = [
 ];
 
 export function middleware(request) {
-  const host = request.headers.get("host");
+  // ✅ ALWAYS prefer forwarded host on Vercel
+  let host =
+    request.headers.get("x-forwarded-host") ||
+    request.headers.get("host");
 
   if (!host) return NextResponse.next();
 
-  // Handle localhost separately
-  if (host.includes("localhost")) {
+  // Remove port (e.g. :443, :3000)
+  host = host.split(":")[0];
+
+  // Allow localhost without checks
+  if (host.endsWith("localhost")) {
+    return NextResponse.next();
+  }
+
+  // Main site
+  if (
+    host === "www.frenchfryfeatures.com" ||
+    host === "frenchfryfeatures.com"
+  ) {
     return NextResponse.next();
   }
 
   // Extract subdomain
   const subdomain = host.replace(".frenchfryfeatures.com", "");
 
-  // Allow main site + allowed creatives
+  // Allow known creatives
   if (ALLOWED_SUBDOMAINS.includes(subdomain)) {
     return NextResponse.next();
   }
 
-  // 🚨 Redirect EVERYTHING else to www
+  // 🚨 Redirect unknown subdomains
   return NextResponse.redirect(
     "https://www.frenchfryfeatures.com",
     308
