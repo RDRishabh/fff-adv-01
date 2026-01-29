@@ -48,9 +48,9 @@ export default function ShopifyVariantPage() {
 
 
         {/* OFFER / CALENDLY */}
-        <section id="book-call">
+        {/* <section id="book-call">
         <Offer />
-        </section>
+        </section> */}
     </>
   );
 }

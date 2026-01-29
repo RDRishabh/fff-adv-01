@@ -175,7 +175,7 @@ export default function HowItWorks() {
           <button
             type="button"
             onClick={openPopup}
-            className="sm:w-auto rounded-full bg-[#2563EB ] px-6 sm:px-8 py-3 text-base sm:text-2xl font-medium text-white hover:bg-[#e66d00] transition inline-flex items-center  gap-2"
+            className="sm:w-auto rounded-full bg-[#2563EB] px-6 sm:px-8 py-3 text-base sm:text-2xl font-medium text-white hover:bg-[#e66d00] transition inline-flex items-center  gap-2"
           >
             Book a free store check
             <svg
