@@ -34,15 +34,26 @@ export default function BookCallPopup({ open, onClose }) {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    if (submitted) {
-      const timeout = setTimeout(() => {
-        if (typeof window !== 'undefined') {
-          window.location.hash = 'book-call';
+    if (!submitted) return;
+
+    const timeout = setTimeout(() => {
+      // 1️⃣ Close popup
+      onClose?.();
+
+      // 2️⃣ Redirect to #book-call
+      if (typeof window !== "undefined") {
+        window.location.hash = "book-call";
+
+        // Optional: smooth scroll if section exists
+        const el = document.getElementById("book-call");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
         }
-      }, 2200);
-      return () => clearTimeout(timeout);
-    }
-  }, [submitted]);
+      }
+    }, 2200); // 2.2 seconds
+
+    return () => clearTimeout(timeout);
+  }, [submitted, onClose]);
 
   // TODO: Replace with your actual Google Apps Script Web App URL
   const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyYgxD8hYCWhsWyQEme1KrTJvKnjT8ONNEV7xh54haTUYt-CbzsS7tukPxxRDDafujv/exec";
