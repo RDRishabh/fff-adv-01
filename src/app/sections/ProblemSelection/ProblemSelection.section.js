@@ -38,7 +38,7 @@ function BookCallButton() {
 
 export default function ProblemSelection() {
   return (
-    <section className="bg-[#FDF8F4] py-32 relative min-h-screen">
+    <section className="bg-[#FDF8F4] py-12 relative min-h-screen">
       <div className="mx-auto max-w-7xl px-4">
         {/* Grid container with items-start - CRITICAL for sticky */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">

@@ -16,84 +16,67 @@ const brands = [
   { name: "Vratam Black", src: "/logo/Vratam_Black.avif" },
 ];
 
+// Add custom CSS for responsive marquee speed
+// You can move this to a CSS file if preferred
+const marqueeStyle = `
+  <style>
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 24s linear infinite;
+    }
+
+    @media (max-width: 639px) {
+      .animate-marquee {
+        animation-duration: 24s;
+      }
+    }
+  </style>
+`;
+
+
 export default function BrandsStrip() {
   return (
-    <section className="py-12 bg-[#ff7a00] overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 text-center">
-        
+    <>
+      <div dangerouslySetInnerHTML={{ __html: marqueeStyle }} />
 
-        {/* Heading */}
-        <h2 className="text-3xl font-bold text-[#FDF8F4] md:text-4xl lg:text-5xl leading-tight">
+      <section className="py-12 bg-[#ff7a00] overflow-hidden">
+        <h2 className="text-center text-3xl sm:text-4xl font-bold text-[#FDF8F4]">
           Brands we’ve worked with
         </h2>
-      </div>
 
-      {/* Infinite Scrolling Logos */}
-      <div className="mt-12 relative">
-        {/* Gradient fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#ff7a00] to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#ff7a00] to-transparent z-10" />
-        
-        {/* Scrolling container */}
-        <div className="flex animate-marquee">
-          {/* First set of logos */}
-          <div className="flex shrink-0 items-center gap-16 px-8">
-            {brands.map((brand, i) => (
+        <div className="relative mt-12 overflow-hidden">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#ff7a00] to-transparent z-10" />
+          <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#ff7a00] to-transparent z-10" />
+
+          {/* Marquee */}
+          <div className="animate-marquee">
+            {[...brands, ...brands].map((brand, i) => (
               <div
-                key={`first-${i}`}
-                className="flex items-center gap-3 text-[#000000]/90 bg-white rounded-2xl px-4 py-2"
+                key={i}
+                className="mx-6 flex items-center bg-white rounded-2xl px-6 py-3"
               >
                 <img
                   src={brand.src}
                   alt={brand.name}
                   className="w-28 h-12 object-contain"
-                  style={{ width: '7rem', height: '3rem' }}
                   loading="lazy"
                 />
-                {/* <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span> */}
-              </div>
-            ))}
-          </div>
-          
-          {/* Duplicate set for seamless loop */}
-          <div className="flex shrink-0 items-center gap-8 px-8">
-            {brands.map((brand, i) => (
-              <div
-                key={`second-${i}`}
-                className="flex items-center gap-3 text-[#000000]/90 bg-white rounded-2xl px-4 py-2"
-              >
-                <img
-                  src={brand.src}
-                  alt={brand.name}
-                  className="w-28 h-12 object-contain"
-                  style={{ width: '7rem', height: '3rem' }}
-                  loading="lazy"
-                />
-                {/* <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span> */}
-              </div>
-            ))}
-          </div>
-          
-          {/* Third set for extra smoothness */}
-          <div className="flex shrink-0 items-center gap-16 px-8">
-            {brands.map((brand, i) => (
-              <div
-                key={`third-${i}`}
-                className="flex items-center gap-3 text-[#000000]/90 bg-white rounded-2xl px-4 py-2"
-              >
-                <img
-                  src={brand.src}
-                  alt={brand.name}
-                  className="w-28 h-12 object-contain"
-                  style={{ width: '7rem', height: '3rem' }}
-                  loading="lazy"
-                />
-                {/* <span className="text-lg font-semibold whitespace-nowrap">{brand.name}</span> */}
               </div>
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

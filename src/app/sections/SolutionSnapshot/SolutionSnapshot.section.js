@@ -61,7 +61,7 @@ const solutionCards = [
 export default function SolutionSnapshot() {
   const { openPopup } = useBookCall();
   return (
-    <section className="bg-[#FDF8F4] py-24 " id="what-we-do">
+    <section className="bg-[#FDF8F4] py-12 " id="what-we-do">
       <div className="mx-auto max-w-7xl px-4">
         {/* Header */}
         <div className="text-center mb-8">

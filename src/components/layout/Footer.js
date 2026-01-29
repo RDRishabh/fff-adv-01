@@ -29,9 +29,9 @@ export default function Footer() {
                 Quick Links
               </p>
               <ul className="space-y-3 text-sm text-neutral-600">
-                <li><a href="#services" className="hover:text-[#ff7a00] transition">Services</a></li>
-                <li><a href="#process" className="hover:text-[#ff7a00] transition">Process</a></li>
-                <li><a href="#faq" className="hover:text-[#ff7a00] transition">FAQ</a></li>
+                <li><a href="#proof" className="hover:text-[#ff7a00] transition">Proof</a></li>
+                <li><a href="#what-we-do" className="hover:text-[#ff7a00] transition">What we do</a></li>
+                <li><a href="#how-it-works" className="hover:text-[#ff7a00] transition">How it works</a></li>
                 <li><a href="#book-call" className="hover:text-[#ff7a00] transition">Book a Call</a></li>
               </ul>
             </div>
@@ -55,10 +55,10 @@ export default function Footer() {
             <p className="text-sm text-neutral-500">
               © 2026 French Fry Features. All rights reserved.
             </p>
-            <div className="flex gap-6 text-sm text-neutral-500">
+            {/* <div className="flex gap-6 text-sm text-neutral-500">
               <a href="#" className="hover:text-neutral-800 transition">Privacy Policy</a>
               <a href="#" className="hover:text-neutral-800 transition">Terms of Service</a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

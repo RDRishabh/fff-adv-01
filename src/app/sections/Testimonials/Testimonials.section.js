@@ -95,7 +95,7 @@ const TestimonialCard = React.forwardRef(({ testimonial, minHeight }, ref) => (
 
     {/* Text */}
     <div className="flex-1">
-      <p className="text-[#333] leading-relaxed font-medium text-xl mb-3">
+      <p className="text-[#333] leading-relaxed font-medium text-sm lg:text-xl mb-3">
         {testimonial.text}
       </p>
     </div>
@@ -220,14 +220,14 @@ export default function Testimonials() {
         <div className=" w-full">
           <div
             ref={trackRef}
-            className="flex gap-8 will-change-transform"
+            className="flex gap-8 will-change-transform" 
             style={{ width: "max-content" }}
           >
             {items.map((testimonial, idx) => (
               <div
                 key={idx}
                 style={{ width: CARD_WIDTH }}
-                className="flex-shrink-0"
+                className="flex-shrink-0 "
               >
                 <TestimonialCard
                   testimonial={testimonial}

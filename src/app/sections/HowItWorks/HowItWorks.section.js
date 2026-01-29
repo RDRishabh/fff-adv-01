@@ -39,7 +39,7 @@ const steps = [
 export default function HowItWorks() {
   const { openPopup } = useBookCall();
   return (
-    <section className="py-24 bg-[#FDF8F4]">
+    <section className="py-12 bg-[#FDF8F4]">
       <div className="mx-auto max-w-6xl px-4">
         {/* Header */}
         <div className="text-center mb-16">
@@ -132,7 +132,7 @@ export default function HowItWorks() {
 
         {/* Mobile Timeline */}
         <div className="md:hidden">
-          <div className="relative pl-4">
+          <div className="relative">
             <div className="absolute left-[24px] top-6 bottom-6 w-0.5 bg-neutral-300" />
 
             <div className="space-y-6">
