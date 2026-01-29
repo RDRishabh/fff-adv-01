@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useBookCall } from "../../../components/ui/BookCallContext";
 import { HERO_VARIANTS } from "../../../constants/variants";
@@ -22,22 +23,38 @@ const headlines = [
   "TRUCARE",
   "VRATAM",
 ];
-export default function HeroSection({ variant = "control" }) {
+export default function HeroSection() {
   const { openPopup } = useBookCall() || {};
-  const heroCopy = HERO_VARIANTS[variant] || HERO_VARIANTS.control;
+  const pathname = usePathname();
+  // Map routes to variant keys
+  const routeToVariant = {
+    "/shopify1": "scale-ready-store",
+    "/shopify2": "stop-ad-loss",
+    "/shopify3": "growth-ready-store",
+    "/shopify4": "checkout-ready",
+    "/shopify5": "ready-to-sell-store",
+    "/shopify6": "lean-shopify-store",
+    "/shopify7": "track-to-scale",
+    "/shopify8": "conversion-fix",
+    "/shopify9": "business-ready-store",
+  };
+  const variantKey = routeToVariant[pathname] || "control";
+  const heroCopy = HERO_VARIANTS[variantKey] || HERO_VARIANTS.control;
   return (
     <section className="relative bg-[#FDF8F4] overflow-hidden pt-20 sm:pt-28 lg:pt-40 pb-10 sm:pb-20 lg:pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-16">
           {/* LEFT COPY */}
           <div className="w-full pt-6 md:pt-0 lg:text-left">
+
             <p className="text-4xl lg:text-6xl font-base leading-tight tracking-tight text-black">
               {heroCopy.title}
             </p>
-
-            <p className="mt-4 sm:mt-6 text-sm xs:text-base sm:text-[22px] text-neutral-700">
-              We set up (or rebuild) your store so you can scale paid ads to 3-4X ROAS <br/> without worrying about leaks in the funnel. 
-            </p>
+            {heroCopy.subtitle && (
+              <p className="mt-4 sm:mt-6 text-sm xs:text-base sm:text-[22px] text-neutral-700">
+                {heroCopy.subtitle}
+              </p>
+            )}
 
             {/* CTA */}
             <div className="mt-6 sm:mt-8 flex justify-start">
