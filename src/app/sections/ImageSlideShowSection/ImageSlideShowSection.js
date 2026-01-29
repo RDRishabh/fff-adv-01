@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 const slides = [
+  "/images/section/slide01.png",
+  "/images/section/slide02.png",
   "/images/section/slide03.png",
   "/images/section/slide04.png",
   "/images/section/slide05.png",
@@ -10,6 +12,9 @@ const slides = [
   "/images/section/slide07.png",
   "/images/section/slide08.png",
   "/images/section/slide09.png",
+  "/images/section/slide10.png",
+  "/images/section/slide11.png",
+  "/images/section/slide12.png",
 ];
 
 const SLIDE_GAP = 16;
