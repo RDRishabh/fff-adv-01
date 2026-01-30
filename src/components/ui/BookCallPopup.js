@@ -43,7 +43,8 @@ const steps = [
 
 export default function BookCallPopup({ open, onClose }) {
   const [step, setStep] = useState(0);
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({ countryCode: '+91' });
+  const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -59,20 +60,69 @@ export default function BookCallPopup({ open, onClose }) {
     }, [submitted]);
 
   // TODO: Replace with your actual Google Apps Script Web App URL
-  const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyYgxD8hYCWhsWyQEme1KrTJvKnjT8ONNEV7xh54haTUYt-CbzsS7tukPxxRDDafujv/exec";
+  const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyUX2iZ_nN8fTOkF3bkstjLWbmX098WZf7ItZ37b6uSHXGfA3Ah2tXVVgYOrF-SWn36/exec";
 
   if (!open) return null;
 
   const handleChange = (e) => {
-    const { name, value, type } = e.target;
-    setForm((f) => ({ ...f, [name]: value }));
+    const { name, value } = e.target;
+    if (name === 'countryCode') {
+      // Always keep '+' at the start, only allow digits after
+      let val = value.startsWith('+') ? value : '+' + value.replace(/[^\d]/g, '');
+      if (val === '') val = '+';
+      val = '+' + val.slice(1).replace(/[^\d]/g, '');
+      setForm((f) => ({ ...f, countryCode: val }));
+    } else if (name === 'phone') {
+      setForm((f) => ({ ...f, phone: value.replace(/[^\d]/g, '') }));
+    } else {
+      setForm((f) => ({ ...f, [name]: value }));
+    }
   };
 
   const handleRadio = (name, value) => {
     setForm((f) => ({ ...f, [name]: value }));
   };
 
+  // Validation logic for each step
+  const validateStep = () => {
+    const currentFields = steps[step].fields || [];
+    let newErrors = {};
+    currentFields.forEach((field) => {
+      if (field.required) {
+        if (!form[field.name] || form[field.name].trim() === "") {
+          newErrors[field.name] = `${field.label} is required`;
+        } else if (field.type === "email") {
+          // Basic email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(form[field.name])) {
+            newErrors[field.name] = "Enter a valid email address";
+          }
+        } else if (field.name === "phone") {
+          const fullPhone = `${form.countryCode}${form.phone}`;
+
+          // + followed by 10–15 digits total
+          const phoneRegex = /^\+\d{10,15}$/;
+
+          if (!phoneRegex.test(fullPhone)) {
+            newErrors.phone =
+              "Enter a valid phone number with country code (e.g. +919876543210)";
+          }
+        }
+      }
+    });
+    // Special case for helpWith
+    if (step === 1 && form.onShopify && form.onShopify !== 'I want to move to Shopify') {
+      if (!form.helpWith) {
+        newErrors.helpWith = "Please select an option";
+      }
+    }
+    return newErrors;
+  };
+
   const handleNext = () => {
+    const validationErrors = validateStep();
+    setErrors(validationErrors);
+    if (Object.keys(validationErrors).length > 0) return;
     // If on 'What you need' step and user selected 'I want to move to Shopify', skip helpWith and go to Final Bits
     if (step === 1 && form.onShopify === 'I want to move to Shopify') {
       setStep(2);
@@ -84,28 +134,36 @@ export default function BookCallPopup({ open, onClose }) {
     setStep((s) => Math.max(s - 1, 0));
   };
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setSubmitting(true);
+    e.preventDefault();
+    const validationErrors = validateStep();
+    setErrors(validationErrors);
+    if (Object.keys(validationErrors).length > 0) return;
+    setSubmitting(true);
 
-  try {
-    const formBody = new URLSearchParams(form).toString();
+    try {
+      const payload = {
+        ...form,
+        phone: `${form.countryCode}${'-'}${form.phone}`,
+      };
+      delete payload.countryCode;
+      const formBody = new URLSearchParams(payload).toString();
 
-    const res = await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: formBody,
-    });
+      const res = await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formBody,
+      });
 
-    await res.text(); // Apps Script returns text
-    setSubmitted(true);
-  } catch (err) {
-    alert("There was an error submitting the form. Please try again.");
-  } finally {
-    setSubmitting(false);
-  }
-};
+      await res.text(); // Apps Script returns text
+      setSubmitted(true);
+    } catch (err) {
+      alert("There was an error submitting the form. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
 
 
@@ -140,7 +198,29 @@ export default function BookCallPopup({ open, onClose }) {
                   <label className="block font-medium mb-1 text-neutral-800">
                     {field.label}{field.required && <span className="text-red-500">*</span>}
                   </label>
-                  {field.type === "text" || field.type === "email" ? (
+                  {field.type === "text" && field.name === "phone" ? (
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        name="countryCode"
+                        value={form.countryCode || '+91'}
+                        onChange={handleChange}
+                        required
+                        maxLength={5}
+                        style={{ width: '70px' }}
+                        className="rounded-xl border border-neutral-200 px-2 py-3 text-lg focus:ring-2 focus:ring-[#2563EB] focus:outline-none"
+                      />
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={form.phone || ''}
+                        onChange={handleChange}
+                        required={field.required}
+                        placeholder="9876543210"
+                        className="flex-1 rounded-xl border border-neutral-200 px-4 py-3 text-lg focus:ring-2 focus:ring-[#2563EB] focus:outline-none"
+                      />
+                    </div>
+                  ) : field.type === "text" || field.type === "email" ? (
                     <input
                       type={field.type}
                       name={field.name}
@@ -188,40 +268,51 @@ export default function BookCallPopup({ open, onClose }) {
                       className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-lg focus:ring-2 focus:ring-[#2563EB] focus:outline-none"
                     />
                   ) : null}
+                  {errors[field.name] && (
+                    <div className="text-red-500 text-sm mt-1">{errors[field.name]}</div>
+                  )}
                 </div>
               );
             })}
 
-            {/* Conditionally render helpWith if onShopify is answered and not 'I want to move to Shopify' */}
+            {/* Conditionally render helpWith with options based on onShopify answer */}
             {step === 1 && form.onShopify && form.onShopify !== 'I want to move to Shopify' && (
               <div>
                 <label className="block font-medium mb-1 text-neutral-800">
                   What do you want help with?<span className="text-red-500">*</span>
                 </label>
                 <div className="flex flex-col gap-2">
-                  {['Rebuilding an existing store', 'CRO optimization for paid ads', 'Launching a new store'].map((opt) => (
-                    <label key={opt} className="flex items-center gap-3 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="helpWith"
-                        value={opt}
-                        checked={form.helpWith === opt}
-                        onChange={() => handleRadio('helpWith', opt)}
-                        required
-                        className="accent-[#2563EB] w-5 h-5"
-                      />
-                      <span className="text-lg">{opt}</span>
-                    </label>
-                  ))}
+                  {(form.onShopify === 'Yes'
+                    ? ['Rebuilding an existing store', 'CRO optimization for paid ads']
+                    : form.onShopify === 'No'
+                    ? ['Launching a new store']
+                    : [])
+                    .map((opt) => (
+                      <label key={opt} className="flex items-center gap-3 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="helpWith"
+                          value={opt}
+                          checked={form.helpWith === opt}
+                          onChange={() => handleRadio('helpWith', opt)}
+                          required
+                          className="accent-[#2563EB] w-5 h-5"
+                        />
+                        <span className="text-lg">{opt}</span>
+                      </label>
+                    ))}
                 </div>
+                {errors.helpWith && (
+                  <div className="text-red-500 text-sm mt-1">{errors.helpWith}</div>
+                )}
               </div>
             )}
             <div className="flex items-center justify-between mt-8">
               <button
                 type="button"
                 onClick={handleBack}
-                disabled={step === 0}
                 className="rounded-full px-6 py-2 bg-neutral-100 text-neutral-700 font-semibold disabled:opacity-50"
+                disabled={step === 0 || submitting}
               >
                 Back
               </button>
