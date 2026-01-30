@@ -46,6 +46,19 @@ export default function RootLayout({ children }) {
             fbq('track', 'PageView');
           `}
         </Script>
+        
+        <Script id="gtm-pageview" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtmTrackPageView() {
+              window.dataLayer.push({ event: 'pageview', page: window.location.pathname });
+            }
+            gtmTrackPageView();
+            window.addEventListener('popstate', gtmTrackPageView);
+            window.addEventListener('pushstate', gtmTrackPageView);
+            window.addEventListener('replaceState', gtmTrackPageView);
+          `}
+        </Script>
       </head>
 
       <body className="font-sans antialiased">
