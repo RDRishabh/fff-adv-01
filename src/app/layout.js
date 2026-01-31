@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { BookCallProvider } from "../components/ui/BookCallContext";
 import Script from "next/script";
+import GTMTracker from "@/components/GTMTracker";
 
 // export const metadata = {
 //   title: "French Fry Features – Shopify Stores That Convert",
@@ -19,7 +20,7 @@ export default function RootLayout({ children }) {
           href="https://api.fontshare.com"
           crossOrigin="anonymous"
         />
-        
+
         <Script id="gtm" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -29,7 +30,7 @@ export default function RootLayout({ children }) {
             })(window,document,'script','dataLayer','GTM-W2KB3VDM');
           `}
         </Script>
-       
+
         {/* Meta Pixel */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
@@ -43,22 +44,9 @@ export default function RootLayout({ children }) {
             (window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '1411291903775804');
-            fbq('track', 'PageView');
           `}
         </Script>
-        
-        <Script id="gtm-pageview" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtmTrackPageView() {
-              window.dataLayer.push({ event: 'pageview', page: window.location.pathname });
-            }
-            gtmTrackPageView();
-            window.addEventListener('popstate', gtmTrackPageView);
-            window.addEventListener('pushstate', gtmTrackPageView);
-            window.addEventListener('replaceState', gtmTrackPageView);
-          `}
-        </Script>
+
       </head>
 
       <body className="font-sans antialiased">
@@ -73,6 +61,7 @@ export default function RootLayout({ children }) {
         </noscript>
 
         <BookCallProvider>
+          <GTMTracker />
           <Navbar />
           <main>{children}</main>
           <Footer />

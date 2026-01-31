@@ -1,5 +1,5 @@
-"use client";
 import { useState, useEffect } from "react";
+import * as gtm from "@/lib/gtm";
 
 const steps = [
   {
@@ -8,21 +8,23 @@ const steps = [
       { name: "firstName", label: "Name", required: true, type: "text" },
       { name: "email", label: "Work email", required: true, type: "email" },
       { name: "storeUrl", label: "Store URL (optional)", required: false, type: "text" },
-      { name: "role", label: "Industry", required: true, type: "select", options: [
-        "E-Commerce",
-        "Dropshipping",
-        "EdTech",
-        "Health & Wellness",
-        "Fashion & Apparel",
-        "Beauty & Personal Care",
-        "Home & Living",
-        "Food & Beverage",
-        "Electronics",
-        "Automotive",
-        "B2B",
-        "Services",
-        "Other"
-      ] },
+      {
+        name: "role", label: "Industry", required: true, type: "select", options: [
+          "E-Commerce",
+          "Dropshipping",
+          "EdTech",
+          "Health & Wellness",
+          "Fashion & Apparel",
+          "Beauty & Personal Care",
+          "Home & Living",
+          "Food & Beverage",
+          "Electronics",
+          "Automotive",
+          "B2B",
+          "Services",
+          "Other"
+        ]
+      },
     ],
   },
   {
@@ -47,17 +49,26 @@ export default function BookCallPopup({ open, onClose }) {
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [viewTracked, setViewTracked] = useState(false);
+  const [startTracked, setStartTracked] = useState(false);
 
 
-    useEffect(() => {
-      if (!submitted) return;
-      const timeout = setTimeout(() => {
-        if (typeof window !== "undefined") {
-          window.location.href = "/ThankYou";
-        }
-      }, 1800); // 1.8 seconds for a quick transition
-      return () => clearTimeout(timeout);
-    }, [submitted]);
+  useEffect(() => {
+    if (!submitted) return;
+    const timeout = setTimeout(() => {
+      if (typeof window !== "undefined") {
+        window.location.href = "/ThankYou";
+      }
+    }, 1800); // 1.8 seconds for a quick transition
+    return () => clearTimeout(timeout);
+  }, [submitted]);
+
+  useEffect(() => {
+    if (open && !viewTracked) {
+      gtm.event({ action: 'Form_View', category: 'Lead Generation', label: 'Book Call Popup' });
+      setViewTracked(true);
+    }
+  }, [open, viewTracked]);
 
   // TODO: Replace with your actual Google Apps Script Web App URL
   const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyUX2iZ_nN8fTOkF3bkstjLWbmX098WZf7ItZ37b6uSHXGfA3Ah2tXVVgYOrF-SWn36/exec";
@@ -65,6 +76,10 @@ export default function BookCallPopup({ open, onClose }) {
   if (!open) return null;
 
   const handleChange = (e) => {
+    if (!startTracked) {
+      gtm.event({ action: 'Form_Start', category: 'Lead Generation', label: 'Book Call Popup' });
+      setStartTracked(true);
+    }
     const { name, value } = e.target;
     if (name === 'countryCode') {
       // Always keep '+' at the start, only allow digits after
@@ -157,6 +172,7 @@ export default function BookCallPopup({ open, onClose }) {
       });
 
       await res.text(); // Apps Script returns text
+      gtm.trackLead({ form_name: 'Book Call Popup' });
       setSubmitted(true);
     } catch (err) {
       alert("There was an error submitting the form. Please try again.");
@@ -285,8 +301,8 @@ export default function BookCallPopup({ open, onClose }) {
                   {(form.onShopify === 'Yes'
                     ? ['Rebuilding an existing store', 'CRO optimization for paid ads']
                     : form.onShopify === 'No'
-                    ? ['Launching a new store']
-                    : [])
+                      ? ['Launching a new store']
+                      : [])
                     .map((opt) => (
                       <label key={opt} className="flex items-center gap-3 cursor-pointer">
                         <input
