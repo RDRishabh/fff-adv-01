@@ -15,6 +15,10 @@ export const pageview = (url) => {
             page: url,
         });
     }
+
+    if (typeof window !== 'undefined' && window.fbq) {
+        window.fbq('track', 'PageView');
+    }
 };
 
 export const event = ({ action, category, label, value, ...params }) => {
