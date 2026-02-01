@@ -137,7 +137,10 @@ export default function BookCallPopup({ open, onClose }) {
   const handleNext = () => {
     const validationErrors = validateStep();
     setErrors(validationErrors);
-    if (Object.keys(validationErrors).length > 0) return;
+    if (Object.keys(validationErrors).length > 0) {
+      console.log("Validation errors:", validationErrors);
+      return;
+    }
     // If on 'What you need' step and user selected 'I want to move to Shopify', skip helpWith and go to Final Bits
     if (step === 1 && form.onShopify === 'I want to move to Shopify') {
       setStep(2);
@@ -171,10 +174,11 @@ export default function BookCallPopup({ open, onClose }) {
         body: formBody,
       });
 
-      await res.text(); // Apps Script returns text
+      console.log("Form submitted successfully to Google Sheets");
       gtm.trackLead({ form_name: 'Book Call Popup' });
       setSubmitted(true);
     } catch (err) {
+      console.error("Form submission error:", err);
       alert("There was an error submitting the form. Please try again.");
     } finally {
       setSubmitting(false);
