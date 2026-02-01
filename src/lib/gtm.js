@@ -47,12 +47,7 @@ export const event = ({ action, category, label, value, ...params }) => {
 export const trackLead = (params = {}) => {
     initDataLayer();
     if (window.dataLayer) {
-        // Push standard Lead event
-        window.dataLayer.push({
-            event: 'Lead',
-            ...params,
-        });
-        // Push explicit Form_Submit event for clarity
+        // Push explicit Form_Submit event
         window.dataLayer.push({
             event: 'Form_Submit',
             ...params,
@@ -60,9 +55,8 @@ export const trackLead = (params = {}) => {
     }
 
     if (typeof window !== 'undefined' && window.fbq) {
-        window.fbq('track', 'Lead', params);
         window.fbq('trackCustom', 'Form_Submit', params);
     }
 
-    console.log("Nuclear Tracking: Lead/Form_Submit fired", params);
+    console.log("Nuclear Tracking: Form_Submit fired", params);
 };
