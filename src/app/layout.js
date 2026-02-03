@@ -61,8 +61,6 @@ export default function RootLayout({ children }) {
             gtag('js', new Date());
             gtag('config', 'G-46N195CXD2');
 
-            fbq('init', '1285318410299876');
-            fbq('track', 'PageView');
           `}
         </Script>
         <noscript>
