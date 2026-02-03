@@ -32,10 +32,20 @@ export default function RootLayout({ children }) {
             s.parentNode.insertBefore(t,s)}
             (window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1411291903775804');
+
+            fbq('init', '1285318410299876');
             fbq('track', 'PageView');
           `}
         </Script>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1285318410299876&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
       </head>
 
       <body className="font-sans antialiased">

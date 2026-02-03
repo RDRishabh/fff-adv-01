@@ -16,10 +16,10 @@ export default function Footer() {
                 Shopify stores built to convert and scale.
               </p>
               <a 
-                href="mailto:hello@fff.agency" 
+                href="mailto:frenchfryfeatures@gmail.com" 
                 className="text-lg font-semibold text-neutral-900 hover:text-[#ff7a00] transition"
               >
-                hello@fff.agency
+                frenchfryfeatures@gmail.com
               </a>
             </div>
 
